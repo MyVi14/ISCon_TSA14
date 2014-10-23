@@ -1,4 +1,12 @@
+<?php
 
+// find server url
+$url = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
+
+$rootFolderName = '/ISCon/';
+
+$url .= '' . $rootFolderName;
+?>
 
 <!DOCTYPE html PUBLIC “-//W3C//DTD XHTML 1.0 Transitional//EN" “http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
 
@@ -41,12 +49,12 @@
 <!-- [ MENU NAVIGATION ] -->
 	<div id="sub_navigation">
 		<ul>
-			<li><a class="home" href="#" shape="rect">Home</a></li> 
-			<li><a href="#" shape="rect">For Student</a></li>
+			<li><a class="home" href="<?PHP echo $url ?>" shape="rect">Home</a></li> 
+			<li><a href="<?PHP echo $url . 'view/studentHome.php' ?>" shape="rect">For Student</a></li>
 			<li><a href="#" shape="rect">For Supervisor</a></li>
 			<li><a href="#" shape="rect">For Academic Chair</a></li>
 			<li><a href="#" shape="rect">For School Dean</a></li>
-			<li><a href="php/teamMembers.php" shape="rect">Team Member</a></li>	
+			<li><a href="<?PHP echo $url . 'view/teamMembers.php' ?>" shape="rect">Team Member</a></li>	
 		</ul>
 	</div>
 	
@@ -59,6 +67,6 @@
 
 <!-- [ HEADER BANNER ] -->
 	<div id="flash">
-		<img src="images/Education-Banner.jpg" alt="header banner" width="960" height="240" /> 
+		<img src="<?PHP echo $url . 'images/Education-Banner.jpg' ?>" alt="header banner" width="960" height="240" /> 
 	</div>
 <!-- [ END HEADER BANNER ] -->

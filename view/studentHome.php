@@ -4,17 +4,25 @@
 	
 	   Author: Tony
 	   Date: 22 September 2014
-	   Purpose: Homepage of the website
+	   Purpose: Homepage of students
    */
 ?>
 
 <?PHP
-	include(__DIR__ . '/includes/header.php');
+	include(__DIR__ . '/../includes/header.php');
 ?>
 
+	<div id="course_left">
+		<?PHP
+			include(__DIR__ . '/../includes/navigationBar.php');
+		?>
+	</div>
+
 <!-- [CONTENT] -->
+	
+	
 	<div id="main_content">
-		<h1> Welcome to Independent Study Contract (ISC) Portal</h1>
+		<h1> </h1>
 		
 		<!-- LEFT COLUMN -->
 		<div class="column">
@@ -29,5 +37,5 @@
 	</div>
 
 <?PHP
-	include(__DIR__ . '/includes/footer.php');
+	include(__DIR__ . '/../includes/footer.php');
 ?>

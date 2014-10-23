@@ -3,6 +3,13 @@ CREATE DATABASE `ISCON` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE ISCON;
 
+/* Create new tables */
+
+
+
+
+
+
 /* Create a new table for team member information. This table is used to test */
 CREATE TABLE TeamMember
 (

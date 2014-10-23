@@ -1,5 +1,5 @@
 <?PHP
-	include('../includes/header.php');
+	include(__DIR__ . '/../includes/header.php');
 ?>
 
 <?PHP
@@ -11,7 +11,7 @@
 	   Purpose: Getting information of team members and represent on a webpage
    */
    
-	include('../includes/connection.php');
+	include(__DIR__ . '/../includes/connection.php');
 	
 	// execute query and store each as in the variable $row
 	foreach($PDOConn->query('SELECT * from TeamMember') as $row) {
@@ -37,5 +37,5 @@
 ?>
 
 <?PHP
-	include('../includes/footer.php');
+	include(__DIR__ . '/../includes/footer.php');
 ?>

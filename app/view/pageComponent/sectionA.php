@@ -1,10 +1,3 @@
-<html>
-<head>
-<title> Independent Study Contract (ISC) </title>
-
-</head>
-
-<body>
 
 <!-- ISC Form - Start Section A -->
 <div id="sectionA">
@@ -56,8 +49,6 @@
 </div>
 <!-- ISC Form - End Section A -->
 
-</body>
-</html>
 
 
 

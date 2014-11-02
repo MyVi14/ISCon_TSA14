@@ -1,10 +1,6 @@
-<html>
-<head>
-<title> Independent Study Contract (ISC) </title>
-
-</head>
-
-<body>
+<?PHP
+    
+?>
 
 <!-- Start Home Div -->
 <div id="">	
@@ -25,7 +21,7 @@
 	    <td>Undergraduate</td>
 	    <td>2014-10-23</td>
 		<td>Processing</td>
-		<td><a href=""> View Detail </a></td>
+		<td><a href="<?PHP echo $urlPrefix . 'public/isc/get'; ?>"> View Detail </a></td>
 	  </tr>
 	  
 	  <tr>
@@ -33,7 +29,7 @@
 	    <td>Postgraduate</td>
 	    <td>2014-10-23</td>
 		<td>Processing</td>
-		<td><a href=""> View Detail </a></td>
+                <td><button > View Detail </button> </td>
 	  </tr>
 	  
 	</table>
@@ -42,8 +38,6 @@
 </div>
 <!-- End Home Div -->
 
-</body>
-</html>
 
 
 

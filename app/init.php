@@ -7,14 +7,17 @@
        Date: 1 November 2014
        Purpose: Initialize global variables which other classes will use
    */
+// change folder name here
+$name = 'ISCon';
 
+$root = '/'.$name.'/';
 
-$rootFolderName = $_SERVER['DOCUMENT_ROOT'] . '/MVCSimple/';
+$rootFolderName = $_SERVER['DOCUMENT_ROOT'] . $root;
 
 // find server url
 $urlPrefix = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-$root = '/MVCSimple/';
-$urlPrefix .= '' . $root;
+
+$urlPrefix .= $root;
 
 require_once __DIR__ . '/core/App.php';
 require_once __DIR__ . '/core/Controller.php';

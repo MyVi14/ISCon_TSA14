@@ -1,6 +1,5 @@
 <?PHP
-    $urlPrefix = (isset($_SERVER['HTTPS']) ? "https" : "http") . "://$_SERVER[HTTP_HOST]";
-    $urlPrefix .= '/MVCSimple/';
+    $urlPrefix = $this->getURL();
 ?>
 <!DOCTYPE html> 
 
@@ -66,6 +65,7 @@
 	<header class="hidden-xs"><div id="header" class="hidden-xs">
 	<div id="global-bar">
 	<div id="header-nav"><ul>
+        <li><a href="<?PHP echo $urlPrefix . 'public/home/index'; ?>">Home</a></li>
 	<li><a href="<?PHP echo $urlPrefix . 'public/home/student'; ?>">Student</a></li>
 	<li><a href="<?PHP echo $urlPrefix . 'public/home/supervisor'; ?>">Supervisor</a></li>
 	<li><a href="<?PHP echo $urlPrefix . 'public/home/academicChair'; ?>">Academic Chair</a></li>
@@ -78,6 +78,7 @@
 	</div>
 	<div id="header-logo"><a title="Murdoch University Home Page" href="http://www.murdoch.edu.au/">
 	            Murdoch University Home Page
+                    
 	         </a></div>
 	</div></header>
 </div>

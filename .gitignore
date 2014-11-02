@@ -4,3 +4,5 @@ ISCon_TSA14_documents
 *.docx
 *.vsd
 *.vsdx
+nbproject
+/nbproject/private/

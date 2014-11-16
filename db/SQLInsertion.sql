@@ -51,3 +51,36 @@ INSERT INTO `ISCON`.`EXPECTED_ACTIVITY` (`Name`, `Description`) VALUES ('Laborat
 INSERT INTO `ISCON`.`EXPECTED_ACTIVITY` (`Name`, `Description`) VALUES ('Interviews', '');
 INSERT INTO `ISCON`.`EXPECTED_ACTIVITY` (`Name`, `Description`) VALUES ('Data Collections', '');
 INSERT INTO `ISCON`.`EXPECTED_ACTIVITY` (`Name`, `Description`) VALUES ('Writing', '');
+
+# Insert data for ISC_Supervisor
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES ('item1', 'Apart from your time and normal library facilities, 
+                    are any facilities or resources required for the contract 
+                    (e.g. special literature, equipment, technical assistance, transport, 
+                    maintenance costs, laboratory space)?' ,'YesNo');
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES ('item2', 'Apart from associate supervision, does the contract involve other institutions, organisations or persons?' ,'YesNo');
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES ('item3', 'Does the contract involve overseas travel?' ,'YesNo');
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES ('item4', 'Are there any confidentiality restrictions on publication of the results of this contract?' ,'YesNo');
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES ('item5a', 'Does the contract involve: Research with human subjects (e.g. experimental work, interviews, surveys or observation)?' ,'YesNo');
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES ('item5b', 'Does the contract involve: Work with animals or animal materials?' ,'YesNo');
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES ('item5c', 'Does the contract involve: Work with flora?' ,'YesNo');
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES ('item5d', 'Does the contract involve: Matters of a hazardous nature (e.g. potentially biohazardous procedures and situations the use and disposal of hazardous chemicals, or the use of ionising radiation)?' ,'YesNo');
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES ('item5e', 'Does the contract involve: Research on a matter of special political or social sensitivity?' ,'YesNo');
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES('item6', 'Please comment upon the student capacity to undertake the contract and your assessment of the quality of the proposed ISC.', 'Text');
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES('item7', 'Outline the nature and frequency of expected contact with the student. (If contract is to be studied externally, specific detail is required).', 'Text');
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES('item8', 'How many other Independent Study Contracts have you agreed to supervise during the same period as this contract?', 'Text');
+INSERT INTO `ISCON`.`ISC_SUPERVISOR` (`ItemID`, `Description`, `QuestionType`) 
+	VALUES('item9', 'Does the nature of the contract involve any problems relating to personal and commercial confidentiality?', 'YesNo');
+
+

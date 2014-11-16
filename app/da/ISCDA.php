@@ -8,6 +8,44 @@ require_once 'Connection.php';
    Purpose: Responsible for querying databases
 */
 class ISCDA {
+    public static function approveISC($ISCID, $status) {
+        return ISCDA::updateISCStatus($ISCID, $status);
+    }
+        
+    public static function disapproveISC($ISCID, $status) {
+        return ISCDA::updateISCStatus($ISCID, $status);
+    }
+    
+    public static function giveReason($ISCID, $reason) {
+        // connect to database
+        $PDOConn = Connection::getConnection();
+
+        try {
+            $status = $PDOConn->exec("update School_Dean set AdditionalComment = '".$reason."' where ISCID = '" . $ISCID . "'");
+        } catch (Exception $ex) {
+            echo $query . ' :Cannot give reason!';
+            echo $ex->getMessage();
+            exit;
+        }
+        
+        return $status;
+    }
+    
+    private static function updateISCStatus($ISCID, $status) {
+        // connect to database
+        $PDOConn = Connection::getConnection();
+
+        try {
+            $status = $PDOConn->exec("update ISCView set ISCView.ApplicationStatus = '".$status."' where ISCID = '" . $ISCID . "'");
+        } catch (Exception $ex) {
+            echo $query . ' :Cannot update ISC status!';
+            echo $ex->getMessage();
+            exit;
+        }
+        
+        return $status;
+    }
+    
     public static function retrieveISCList() {
         // connect to database
         $PDOConn = Connection::getConnection();
@@ -19,6 +57,7 @@ class ISCDA {
             $results->execute();
         } catch (Exception $ex) {
             echo $query . ' :Cannot retrieve ISCList!';
+            echo $ex->getMessage();
             exit;
         }
         
@@ -52,10 +91,38 @@ class ISCDA {
             
         } catch (Exception $ex) {
             echo $query . ' :Cannot create new ISC!';
+            echo $ex->getMessage();
             exit;
         }
         
         return $r["newISCID"];
+    }
+    
+    public static function addSupervisorAnswers($ISCID = '', $SupervisorAnswerArray = []) {
+        // connect to database
+        $PDOConn = Connection::getConnection();
+        
+        try {
+            $query = "call AddISCSupervisorAnswer(:ISCID, :ItemID, :YesNoAnswer, :TextAnswer, :Commment)";
+            $results = $PDOConn->prepare($query);
+            $results->bindParam(':ISCID', $ISCID);
+            
+            foreach ($SupervisorAnswerArray as $answer) {
+                
+                $results->bindParam(':ItemID', $answer["itemID"]);
+                $results->bindParam(':YesNoAnswer', $answer["yesNoAnswer"]);
+                $results->bindParam(':TextAnswer', $answer["textAnswer"]);
+                $results->bindParam(':Commment', $answer["comment"]);
+
+                $status= $results->execute();
+            }
+        } catch (Exception $ex) {
+            echo $query . ' :Cannot add ISC supervisor answer!';
+            echo $ex->getMessage();
+            exit;
+        }
+        
+        return $status;
     }
     
     public static function getISC($ISCID) {
@@ -153,6 +220,12 @@ class ISCDA {
             $replacement = $PDOConn->query("select * from Assessment_Component where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
             $ISCDetail->addReplacement($replacement["UnitCode"], $replacement["Title"], $replacement["CoreOrElective"]);
             
+            // set ISC supervisor answer
+            $supervisorAnswers = $PDOConn->query("select * from ISCSupervisorAnswerView where ISCID = '".$ISCID."';");
+            foreach ($supervisorAnswers as $row) {
+                $ISCDetail->addSupervisorAnswer($row['ItemID'], $row['YesNoAnswer'], $row['TextAnswer'], $row['Comment']);
+            }
+            
             $PDOConn = NULL;
         }
         
@@ -241,6 +314,7 @@ class ISCDA {
             
         } catch(Exeption $e) {
             echo $query . ' :Cannot update ISC details!';
+            echo $ex->getMessage();
             exit;
         }
             

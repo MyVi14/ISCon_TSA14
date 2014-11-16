@@ -222,24 +222,24 @@ CREATE TABLE ISC_EXPECTED_ACTIVITY
 
 CREATE TABLE ISC_SUPERVISOR
 (
-	ItemID				int				not null,
+	ItemID				varchar(10)				not null,
 	Description			varchar(1000),
 	QuestionType		varchar(50),
-	YesNoAnswer			bool,
-	TextAnswer			varchar(1000),
 	CONSTRAINT 	ISCSupervisorPK	primary key (ItemID)
 );
 
-CREATE TABLE ISC_SUPERVISOR
+CREATE TABLE ISC_SUPERVISOR_ANSWER
 (
 	ISCID				int			not null,
-	ItemNumber			int			not null,
-	ItemID				int			not null,
-	CONSTRAINT 	ISCSupervisorPK		primary key (ISCID, ItemNumber),
-	CONSTRAINT 	ISCSupervisorFK		foreign key (ItemID)
+	ItemID				varchar(10)			not null,
+	YesNoAnswer			varchar(10),
+	TextAnswer			varchar(1000),
+	Commment			varchar(1000),
+	CONSTRAINT 	ISCSupervisorPK		primary key (ISCID, ItemID),
+	CONSTRAINT 	ISCSupervisorAnswerFK		foreign key (ItemID)
 						references ISC_Supervisor(ItemID),
-	CONSTRAINT 	ISCPK		foreign key (ISCID)
-								references ISC(ItemID)
+	CONSTRAINT 	ISCSupervisorAnswerFK2		foreign key (ISCID)
+								references ISC(ISCID)
 );
 
 #Create a new table for team member information. This table is used to test

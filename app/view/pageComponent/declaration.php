@@ -1,28 +1,27 @@
-<html>
-<head>
-<title> Independent Study Contract (ISC) </title>
 
-</head>
-
-<body>
 
 <!-- ISC Form - Start Declaration Part -->
 <div id="declaration">
-	<h4>Declaration</h4>	
-	
-	<form method="POST" action="" onSubmit="return validate(this)">
-	
+	<h3>Declaration</h3>	
+        
 	<label for="approveISC"> By checking this checkbox, you agree this ISC </label>
 	<input type="checkbox" name="approveISC" />
-		
-	<p><input type="reset"> <input type="submit"> </p>
+        <script>
+            $(document).ready(function() {
+                $("input[type='submit']").attr("disabled", true);
 
-	</form>
+                $("input[type='checkbox']").click(function(e){
+                    if ($(this).attr("checked") == "checked") {
+                        $("input[type='submit']").attr("enabled", true);
+                    } else
+                        $("input[type='submit']").attr("disabled", true);
+                });
+            });
+        </script>
+		
+	<p><input type="submit"> <input type="reset"> </p>
 </div>
 <!-- ISC Form - End Declaration Part -->
-
-</body>
-</html>
 
 
 

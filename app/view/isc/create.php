@@ -34,7 +34,8 @@ if ( $data == null ) {
     unset($data["ISCID"]);
     
     // udpate ISC detail
-    $iscController->updateISCDetail($ISCID, $data);
+    if ($data != null)
+        $iscController->updateISCDetail($ISCID, $data);
     
     // get ISC object
     $ISCObj = $iscController->getISC($ISCID);

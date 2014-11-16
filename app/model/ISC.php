@@ -25,6 +25,7 @@ class ISC {
     private $supervisor;
     private $academicChair;
     private $schoolDean;
+    private $supervisorAnswer = array();
     
     public function __construct() {
         
@@ -36,6 +37,48 @@ class ISC {
     
     public static function updateISC($ISC) {
         return ISCDA::updateISC($ISC);
+    }
+    
+    public static function approveISC($ISCID, $who) {
+        if (strtolower($who) == "supervisor" ) {
+            $status = "Supervisor Approved";
+        } else if (strtolower($who) == "school dean") {
+            $status = "SD Approved";
+        } else if (strtolower($who) == "academic chair") {
+            $status = "AC Approved";
+        }
+        
+        return ISCDA::approveISC($ISCID, $status);
+    }
+    
+    public static function disapproveISC($ISCID, $who) {
+        if (strtolower($who) == "supervisor" ) {
+            $status = "Supervisor Not Approved";
+        } else if (strtolower($who) == "school dean") {
+            $status = "SD Not Approved";
+        } else if (strtolower($who) == "academic chair") {
+            $status = "AC Not Approved";
+        }
+        
+        return ISCDA::disapproveISC($ISCID, $status);
+    }
+    
+    public static function giveReason($ISCID, $reason) {
+        ISCDA::giveReason($ISCID, $reason);
+    }
+    
+    public static function addISCSupervisorAnswer($ISC) {
+        return ISCDA::addSupervisorAnswers($ISC->getISCID(), $ISC->getSupervisorAnswer());
+    }
+    
+    public function addSupervisorAnswer($itemID, $yesNoAnswer, $textAnswer, $comment) {
+        $supervisorAnswer = array("itemID" => $itemID,
+                                "yesNoAnswer" => $yesNoAnswer,
+                                "textAnswer" => $textAnswer,
+                                "comment" => $comment,
+                                );
+        
+        array_push($this->supervisorAnswer, $supervisorAnswer);
     }
     
     public function addSupervisor($title, $surname, $givenName, $position, $school, $email) {
@@ -254,8 +297,10 @@ class ISC {
         $this->schoolDean = $schoolDean;
     }
 
-    
+    function getSupervisorAnswer() {
+        return $this->supervisorAnswer;
+    }
 
-    
+
 } // end class ISC
 

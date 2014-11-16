@@ -415,3 +415,24 @@ select * from ISC_Detail;
 select * from supervisor;
 select * from associate_supervisor;
 select * from school_dean;
+
+# create procedure for adding ISC Supervisor Answer
+Delimiter //
+
+CREATE PROCEDURE AddISCSupervisorAnswer (
+									IN ISCID            int,
+									IN ItemID			varchar(10),
+									IN YesNoAnswer		varchar(10),
+									IN TextAnswer		varchar(1000),
+									IN Commment			varchar(1000)
+									)
+label:BEGIN
+	INSERT INTO `iscon`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Commment`)
+		VALUES(ISCID, ItemID, YesNoAnswer, TextAnswer, Commment);
+END label
+//
+
+DELIMITER ;
+select * from ISC_SUPERVISOR_ANSWER;
+INSERT INTO `iscon`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Commment`)
+	VALUES(30, 'item1', 'yes', '', '');

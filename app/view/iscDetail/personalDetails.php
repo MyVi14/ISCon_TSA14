@@ -2,7 +2,7 @@
 
 <!-- ISC Form - Start Section A -->
 <div id="personalDetails" style="margin-left: 10px">
-    <h1> Personal Details</h1>
+    <h1> Section A - Personal Details</h1>
 
     <div class="form-group">
         <label>Student Number</label>

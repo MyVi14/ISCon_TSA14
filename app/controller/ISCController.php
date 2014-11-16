@@ -19,8 +19,8 @@ class ISCController extends Controller {
 //        }
     }
     
-    public function get($ISCID = '') {
-        $this->view('isc/detail', ["ISCID" => $ISCID]);
+    public function get($ISCID = '', $who = '') {
+        $this->view('isc/detail', ["ISCID" => $ISCID, "who" => $who]);
     }
     
     public function createISC($newISC = []) {
@@ -147,10 +147,19 @@ class ISCController extends Controller {
     }
     
     public function submit($ISCID='', $who = '') {
+        
     }
     
-    public function approve($ISCID = '', $status = '', $who = '') {
-        
+    public function approve($ISCID = '', $who = '') {
+        $ISCModel = $this->model('ISCDetail');
+        if ($ISCID != '' && $who != '')
+            $ISCModel->approveISC($ISCID, $who);
+    }
+    
+    public function disapproveISC($ISCID = '', $who = '') {
+        $ISCModel = $this->model('ISCDetail');
+        if ($ISCID != '' && $who != '')
+            $ISCModel->disapproveISC($ISCID, $who);
     }
     
     public function submitComponents($ISCID = '', $components = []) {

@@ -29,6 +29,7 @@
                 var url = $("#studentHomeForm").attr("action");
                 url += "get/";
                 url += $(this).attr("data-iscid");
+                url += "/student";
                 
                 // set new action attribute
                 $("#studentHomeForm").attr("action", url);

@@ -1,7 +1,7 @@
 <!-- This page use an object called $ISCObj to set up data, if no such object is found, no data is printed -->
 
 <div id="iscDetails" style="margin-left: 10px">
-    <h1> ISC Details </h1>
+    <h1> Section B - ISC Details </h1>
     
     <h3>1. Course </h3>
     <input type="text" size="50" name="courseName" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getCourseName(); ?>" />

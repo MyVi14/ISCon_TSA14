@@ -25,10 +25,25 @@ class Controller
      * 
      * @global type $rootFolderName is set from init.php
      * @param type $view to show user
-     * @param type $data that $view needs
+     * @param type $data that array $view needs
      */
-    
     public function view($view, $data = []) {
+        global $rootFolderName;
+        
+        $headerLink = $rootFolderName . 'app/view/pageComponent/header.php';
+        $footerLink = $rootFolderName . 'app/view/pageComponent/footer.php';
+        
+        require_once __DIR__ . '/../view/' . $view . '.php';
+    }
+    
+    /**
+     * Return user with view requested
+     * 
+     * @global type $rootFolderName is set from init.php
+     * @param type $view to show user
+     * @param type $data that object $view needs
+     */
+    public function viewWithObject($view, $object = null) {
         global $rootFolderName;
         
         $headerLink = $rootFolderName . 'app/view/pageComponent/header.php';

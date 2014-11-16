@@ -7,7 +7,7 @@
     Date: 1 November 2014
     Purpose: Controller for processing business logic for Supervisors
  */
-class Supervisor extends Controller {
+class SupervisorController extends Controller {
     public function approve() {
         
     }

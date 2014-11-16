@@ -1,52 +1,36 @@
-<html>
-<head>
-<title> Independent Study Contract (ISC) </title>
 
-<style>
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-th, td {
-    padding: 1px;
-    text-align: left;    
-}
-</style>
-</head>
-
-<body>
 
 <!-- ISC Form - Start Section B -->
 <div id="sectionB">
 
 <h4>Section B - Independent Study Contract details</h4>	
 
-<form method="GET" action="" onSubmit="return validate(this)">
+<p>1. Course
+<input name="course" type="text" size="50" name="course" /></p>
 
-<p><b>1. Course
-<input name="course" type="text" size="50" name="course"></b><br></p>
-
-<p><label><b>2. How will the contract be studied? </b></label><br>
-<input type="radio" name="studyMode" value="internally">Internally<br>
-<input type="radio" name="studyMode" value="externally">Externally<br>
+<p><label>2. How will the contract be studied? <br />
+<input type="radio" name="studyMode" value="internally" />Internally<br />
+<input type="radio" name="studyMode" value="externally" />Externally<br />
 <label>Note: If the contract is to be studied externally, regular contact with your supervisor is still required.</label></p>
 
 
-<p><label><b>3. Supervisor </b>- must be a Murdoch University academic staff member.</b></label><br>
+<p><label>3. Supervisor - must be a Murdoch University academic staff member</label><br />
 
-<table name="associateSupervisor">
+<table name="supervisor">
   <tr>
     <th>Title</th>
     <th>Name</th> 
     <th>Position</th>
-	<th>School</th>
+    <th>School</th>
+    <th>Email</th>
   </tr>
 
   <tr>
-	<td><input type="text"></td>
-    <td><input type="text"></td> 
-    <td><input type="text"></td>
-	<td><input type="text"></td>
+    <td><input type="text" name="supervisorTitle" /></td>
+    <td><input type="text" name="supervisorName" /></td> 
+    <td><input type="text" name="supervisorPosition" /></td>
+    <td><input type="text" name="supervisorSchool" /></td>
+    <td><input type="text" name="supervisorEmail" /></td>
   </tr>
  
 </table></p>
@@ -59,20 +43,22 @@ th, td {
     <th>Title</th>
     <th>Name</th> 
     <th>Position</th>
-	<th>School</th>
+    <th>School</th>
+    <th>Email</th>
   </tr>
 
   <tr>
-	<td><input type="text"></td>
-    <td><input type="text"></td> 
-    <td><input type="text"></td>
-	<td><input type="text"></td>
+      <td><input type="text" name="associateTitle" /></td>
+    <td><input type="text" name="associateName" /></td> 
+    <td><input type="text" name="associatePosition" /></td>
+    <td><input type="text" name="associateSchool" /></td>
+    <td><input type="text" name="associateEmail" /></td>
   </tr>
   
 </table></p>
 
 
-<p><label><b>5.	Study Period and Campus</b></label><br>
+<p><label> 5.	Study Period and Campus </label><br>
 <label>Tick the boxes to indicate the teaching period in which you will undertake the ISC, and the appropriate campus.</label><br>
 
 <table>
@@ -88,7 +74,7 @@ th, td {
     <td>Semester 1</td>
     <td>Monday Week 1</td> 
     <td>First day of assessment <p>period</p></td>
-	<td><input type="radio" name="studyPeriod" value=""></td>
+	<td><input type="radio" name="studyPeriod" value="Semester1" /></td>
 	
   </tr>
   
@@ -96,7 +82,7 @@ th, td {
     <td>Semester 2</td>
     <td>Monday Week 1</td> 
     <td>First day of assessment <p>period</p></td>
-	<td><input type="radio" name="studyPeriod" value=""></td>
+	<td><input type="radio" name="studyPeriod" value="Semester2" /></td>
 	
   </tr>
   
@@ -104,7 +90,7 @@ th, td {
     <td>Full Year <p>(Feb - Nov)</p></td>
     <td>Monday Week 1</td> 
     <td>First day of Semester 2 <p>assessment period</p></td>
-	<td><input type="radio" name="studyPeriod" value=""></td>
+	<td><input type="radio" name="studyPeriod" value="FullYear (Feb - Nov)"></td>
 	
   </tr>
   
@@ -112,7 +98,7 @@ th, td {
     <td>Winter</td>
     <td>First Monday after the <p>end of Semester 1</p></td> 
     <td>Monday before the start <p>of Semester 2</p></td>
-	<td><input type="radio" name="studyPeriod" value=""></td>
+	<td><input type="radio" name="studyPeriod" value="Winter"></td>
 	
   </tr>
   
@@ -120,7 +106,7 @@ th, td {
     <td>Summer</td>
     <td>First Monday after the <p>end of Semester 2</p></td> 
     <td>Monday before the start <p>of Semester 1</p></td>
-	<td><input type="radio" name="studyPeriod" value=""></td>
+	<td><input type="radio" name="studyPeriod" value="Summer"></td>
 	
   </tr>
   
@@ -128,7 +114,7 @@ th, td {
     <td>Full Year H <p>Option</p> <p>(July - June)</p></td>
     <td>Monday Week 1 of <p>Semester 2</p></td> 
     <td>First day of Semester 1 <p>assessment period</p></td>
-	<td><input type="radio" name="studyPeriod" value=""></td>
+	<td><input type="radio" name="studyPeriod" value="FullYear H Option (July - June)"></td>
 	
   </tr>
  
@@ -143,9 +129,9 @@ th, td {
 	<th>Peel</th>
 </tr>
 <tr>
-	<td><input type="radio" name="campus" value=""></td>
-	<td><input type="radio" name="campus" value=""></td>
-	<td><input type="radio" name="campus" value=""></td>
+	<td><input type="radio" name="campus" value="SouthSt"></td>
+	<td><input type="radio" name="campus" value="Rockingham"></td>
+	<td><input type="radio" name="campus" value="Peel"></td>
 </tr>
 </table>
 
@@ -154,16 +140,16 @@ th, td {
 <p><label><b>6. Level of Contract</b></label><br>
 <label>Part I students can only take contracts at the 100 level.  Part II students can take a 100 level contract, but the 30 points at Part I rule will still apply.</label><br>
 <label>If this is an Undergraduate ISC please indicate its level:</label><br>
-<input type="radio" name="undergraduateLevel" value="100">100
-<input type="radio" name="undergraduateLevel" value="200">200
-<input type="radio" name="undergraduateLevel" value="300">300
-<input type="radio" name="undergraduateLevel" value="400">400 <br><br>
+<input type="radio" name="undergraduateLevel" value="100" />100
+<input type="radio" name="undergraduateLevel" value="200" />200
+<input type="radio" name="undergraduateLevel" value="300" />300
+<input type="radio" name="undergraduateLevel" value="400" />400 <br><br>
 
 <label>If this is a Postgraduate ISC please indicate its level:</label><br>
-<input type="radio" name="postgraduateLevel" value="400">400
-<input type="radio" name="postgraduateLevel" value="500">500
-<input type="radio" name="postgraduateLevel" value="600">600
-<input type="radio" name="postgraduateLevel" value="700">700 <br>
+<input type="radio" name="postgraduateLevel" value="400" />400
+<input type="radio" name="postgraduateLevel" value="500" />500
+<input type="radio" name="postgraduateLevel" value="600" />600
+<input type="radio" name="postgraduateLevel" value="700" />700 <br>
 </p>
 
 <p><label><b>7.	Credit Points</b> (maximum of 3 points per ISC)<br>
@@ -172,7 +158,7 @@ What is the credit point value of this ISC? </label>
 <table style="width:10%">
 
  <tr>
-    <td><input type="text" size="2" maxlength="2" name="creditPoint"></td>
+    <td><input type="text" size="2" maxlength="2" name="creditPoint" /></td>
     <td>points</td> 
   </tr>
   
@@ -191,21 +177,21 @@ the discipline involved. Please leave out redundant words such as "A study of".<
 </p>
 
 <p><label><b>9.	Is this ISC a replacement for a Core or Specified Elective unit?</b></label><br>
-<input type="radio" name="isReplacement" value="yes">YES
-<input type="radio" name="isReplacement" value="no">NO<br><br>
+<input type="radio" name="isReplacement" value="yes" />YES
+<input type="radio" name="isReplacement" value="no" />NO<br><br>
 <label>If YES, please provide the following information on the unit it will replace.</label>
 <table name="replacementUnit">
 
  <tr>
     <th>Unit Code</th>
     <th>Unit Title</th>
-	<th>Core or Specified Elective unit</th>
+    <th>Core or Specified Elective unit</th>
   </tr>
   
   <tr>
-    <td><input type="text"></td>
-	<td><input type="text"></td>
-	<td><input type="text"></td>
+      <td><input type="text" name="replacementUnitCode" /></td>
+    <td><input type="text" name="replacementunitTitle"></td>
+    <td><input type="text" name="replacementCoreOrElective"></td>
   </tr>
   
 </table>
@@ -213,18 +199,20 @@ the discipline involved. Please leave out redundant words such as "A study of".<
 
 
 <label>Note: Your Academic Chair will consider the variation of the course requirements for approval.</label><br>
-<!--
-<label>Academic Chair's name: </label><input name="academicChairName" type="text">
-<input type="checkbox" name="academicChairApproval" value="approved">Approved
-<input type="checkbox" name="academicChairApproval" value="notApproved">Not Approved <br><br>
-
-<label>Academic Chair's signature: <input name="academicChairSignature" type="text">
-Date:</label>
-<input name="date" type="text" size="1">
-<input name="month" type="text" size="1">
-<input name="year" type="text" size="1">
-</p>
--->
+<table>
+<tr>
+    <th>Surname</th>
+    <th>Given name</th>
+	<th>Email</th>
+  </tr>
+  
+  <tr>
+      <td><input type="text" name="academicChairSurname"></td>
+      <td><input type="text" name="academicChairGivenName"></td>
+      <td><input type="text" name="academicChairEmail"></td>
+  </tr>
+  
+</table>
 
 
 <p><label><b>10. Specific learning objectives</b></label><br>
@@ -283,21 +271,21 @@ Examples - surveys, radio, drama, theatre or video production, performance, work
   </tr>
   
   <tr>
-    <td><input type="text"></td>
-	<td><input type="text"></td>
-	<td><input type="text"></td>
+      <td><input type="text" name="readingListAuthor"></td>
+      <td><input type="text" name="readingListTitle"></td>
+      <td><input type="text" name="readingListPublicationDate"></td>
   </tr>
   
   <tr>
-    <td><input type="text"></td>
-	<td><input type="text"></td>
-	<td><input type="text"></td>
+      <td><input type="text" name="readingListAuthor"></td>
+      <td><input type="text" name="readingListTitle"></td>
+      <td><input type="text" name="readingListPublicationDate"></td>
   </tr>
   
   <tr>
-    <td><input type="text"></td>
-	<td><input type="text"></td>
-	<td><input type="text"></td>
+      <td><input type="text" name="readingListAuthor"></td>
+      <td><input type="text" name="readingListTitle"></td>
+      <td><input type="text" name="readingListPublicationDate"></td>
   </tr>
 </table>
 </p>
@@ -316,75 +304,54 @@ value of the contract, have more than one piece of work and specific due dates
  <tr>
     <th>Description of Assessment Components</th>
     <th>Word Length</th>
-	<th>Percentage</th>
-	<th>Due Date</th>
+    <th>Percentage</th>
+    <th>Due Date</th>
   </tr>
   
   <tr>
-    <td><input type="text"></td>
-	<td><input type="text"></td>
-	<td><input type="text"></td>
-	<td><input type="text"></td>
+    <td><input type="text" name="componentDescription" /></td>
+    <td><input type="text" name="componentWordLength" /></td>
+    <td><input type="text" name="componentPercentage" /></td>
+    <td><input type="text" name="componentDueDate" /></td>
   </tr>
   
   <tr>
-    <td><input type="text"></td>
-	<td><input type="text"></td>
-	<td><input type="text"></td>
-	<td><input type="text"></td>
+    <td><input type="text" name="componentDescription" /></td>
+    <td><input type="text" name="componentWordLength" /></td>
+    <td><input type="text" name="componentPercentage" /></td>
+    <td><input type="text" name="componentDueDate" /></td>
   </tr>
 </table>
 </p>
 
-<p><label><b>16. Previous Experience, if any, of Independent Study</b></label><br>
-<label>If this includes previous ISCs, please list the title, credit point value, supervisor and 
-final grade of each contract.</label><br>
+<p> 16. Previous Experience, if any, of Independent Study </p>
+<p>If this includes previous ISCs, please list the title, credit point value, supervisor and 
+    final grade of each contract.</p>
 
 <textarea rows="4" cols="100" name="previousExperience">
 </textarea>
 </p>
 
-<!--
-<p><label><b>17. Student Declaration</b></label><br>
-<label>I agree to fulfil the contract as specified.</label><br><br>
+<p> 17. School Dean Information </p>
+<p> Note: School Dean will be the one who gives final decision</p>
 
-<label>Signature: __________________________________________________________
-Date:</label>
-<input name="date" type="text" size="1">
-<input name="month" type="text" size="1">
-<input name="year" type="text" size="1">
-</p>
+<table>
+<tr>
+    <th>Surname</th>
+    <th>Given name</th>
+	<th>Email</th>
+  </tr>
+  
+  <tr>
+      <td><input type="text" name="schoolDeanSurname"></td>
+      <td><input type="text" name="schoolDeanGivenName"></td>
+      <td><input type="text" name="schoolDeanChairEmail"></td>
+  </tr>
+  
+</table>
 
-<p><input type="reset">
-<input type="submit"></p>
--->
-</form>
+
 
 </div>
 <!-- ISC Form - End Section B -->
-
-</body>
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

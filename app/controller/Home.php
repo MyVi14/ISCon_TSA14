@@ -21,32 +21,44 @@ class Home extends Controller {
      * Return student home page
      */
     public function student($name = '') {
-        //$user = $this->model('User');
+        require_once 'ISCController.php';
         
-        //$user->name = $name;
+        $iscController = new ISCController;
         
-        $this->view('home/studentHome', null);
+        $this->view('home/studentHome', $iscController->getISCList());      
     }
     
     /*
      * Return supervisor home page
      */
     public function supervisor($name = '') {
-        $this->view('home/supervisorHome', null);
+        require_once 'ISCController.php';
+        
+        $iscController = new ISCController;
+ 
+        $this->view('home/supervisorHome', $iscController->getISCList());
     }
     
     /*
      * Return academic chair home page
      */
     public function academicChair($name = '') {
-        $this->view('home/academicChairHome', null);
+        require_once 'ISCController.php';
+        
+        $iscController = new ISCController;
+        
+        $this->view('home/academicChairHome', $iscController->getISCList());
     }
     
     /*
      * Return school dean home page
      */
     public function schoolDean($name = '') {
-        $this->view('home/schoolDeanHome', null);
+        require_once 'ISCController.php';
+        
+        $iscController = new ISCController;
+        
+        $this->view('home/schoolDeanHome', $iscController->getISCList());
     }
     
     public function authorize($user = []) {

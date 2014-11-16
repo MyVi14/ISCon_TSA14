@@ -22,5 +22,7 @@
    * Call method index of controller home from folder public
    */
   $app = new App;
+  
+  
 ?>
 

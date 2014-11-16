@@ -25,8 +25,8 @@ CREATE TABLE APPLICATION_STATUS
 CREATE TABLE STUDY_PERIOD 
 (
 	TeachingPeriod		varchar(50)		Not Null,
-	ContractStart		date,
-	CompletionDate		date,
+	ContractStart		varchar(50),
+	CompletionDate		varchar(50),
 	Description			varchar(1000)
 );
 
@@ -46,14 +46,16 @@ CREATE TABLE STUDY_MODE
 CREATE TABLE ISC
 (
 	ISCID				int				not null 	auto_increment,
-	ApplicationType		varchar(15),
-	ApplicationStatus	varchar(10),
+	ApplicationType		varchar(20),
+	ApplicationStatus	varchar(50),
 	CreatedDate			date,
 	Surname				varchar(30),
 	GivenName			varchar(30),
 	StudentNo			char(10),
 	Email				varchar(50),
 	PhoneNo				char(15),
+	ConfirmMaximumISC	varchar(10),
+	EnrollInPHD			varchar(10),
 	CONSTRAINT 	ISCPK	primary key (ISCID)
 );
 
@@ -68,8 +70,9 @@ CREATE TABLE SUPERVISOR
 	SupervisorEmail		varchar(50),
 	Decision			bool,
 	DecisionDate		date,
+	SupervisorNo		varchar(50),
 	CONSTRAINT 	SupervisorPK	primary key (ISCID),
-	CONSTRAINT 	ISCFK	foreign key (ISCID)
+	CONSTRAINT 	Supervisor_ISCFK	foreign key (ISCID)
 			references ISC(ISCID)
 );
 
@@ -84,8 +87,9 @@ CREATE TABLE ASSOCIATE_SUPERVISOR
 	AssociateEmail		varchar(50),
 	Decision			bool,
 	DecisionDate		date,
+	SupervisorNo		varchar(50),
 	CONSTRAINT 	AssociatePK	primary key (ISCID),
-	CONSTRAINT 	ISCFK	foreign key (ISCID)
+	CONSTRAINT 	Assciate_ISCFK	foreign key (ISCID)
 			references ISC(ISCID)
 );
 
@@ -99,12 +103,13 @@ CREATE TABLE SCHOOL_DEAN
 	Decision			bool,
 	DecisionDate		date,
 	AdditionalComment	varchar(50),
+	SchoolDeanNo		varchar(50),
 	CONSTRAINT 	SchoolDeanPK	primary key (ISCID),
-	CONSTRAINT 	ISCFK	foreign key (ISCID)
+	CONSTRAINT 	SchoolDean_ISCFK	foreign key (ISCID)
 			references ISC(ISCID)
 );
 
-CREATE TABLE Academic_Chair
+CREATE TABLE ACADEMIC_CHAIR
 (
 	ISCID				int				not null,
 	Surname				varchar(50),
@@ -113,8 +118,9 @@ CREATE TABLE Academic_Chair
 	AcademicChairEmail	varchar(50),
 	Decision			bool,
 	DecisionDate		date,
+	AcademicChairNo		varchar(50),
 	CONSTRAINT 	AcademicChairPK	primary key (ISCID),
-	CONSTRAINT 	ISCFK	foreign key (ISCID)
+	CONSTRAINT 	AcademicChair_ISCFK	foreign key (ISCID)
 			references ISC(ISCID)
 );
 
@@ -122,11 +128,94 @@ CREATE TABLE Academic_Chair
 
 CREATE TABLE ISC_DETAIL
 (
-	ISCID				int				not null,
-	
+    ISCID               int             not null,
+    CourseName          VARCHAR(20)      NULL,
+    CreditPoint         INT             NULL,
+    ContractTitle       VARCHAR(50)     NULL,
+    IsAReplacement      VARCHAR(45)     NULL,
+    LearningObjectives  VARCHAR(1000)   NULL,
+    ProjectOutline      VARCHAR(1000)   NULL,
+    PreviousStudy       VARCHAR(100)    NULL,
+    PreviousExperience  VARCHAR(1000)   NULL,
+    ContractLevel       INT(3)          NULL,
+    StudyMode           VARCHAR(20)     NULL,
+    CampusLocation      VARCHAR(50)     NULL,
+    TeachingPeriod      VARCHAR(30)     NULL,
 
-	CONSTRAINT 	ISCPK		foreign key (ISCID)
-								references ISC(ItemID)
+    CONSTRAINT 	ISC_DETAIL_PK	primary key (ISCID),
+    CONSTRAINT 	ISC_DETAIL_ISCFK	foreign key (ISCID)
+                    references ISC(ISCID)
+);
+
+CREATE TABLE REPLACEMENT
+(
+    ISCID           int             not null,
+    UnitCode        VARCHAR(8)      NOT NULL,
+    Title           VARCHAR(50)     NULL,
+    CoreOrElective  VARCHAR(10)     NULL,
+
+    CONSTRAINT 	REPLACEMENT_PK	primary key (ISCID),
+    CONSTRAINT 	REPLACEMENT_ISCFK	foreign key (ISCID)
+                    references ISC(ISCID)
+);
+
+
+CREATE TABLE ASSESSMENT_COMPONENT
+(
+    ComponentID         INT             NOT NULL  auto_increment,
+    Description         VARCHAR(1000)   NULL,
+    WordLength          INT             NULL,
+    Percentage          INT             NULL,
+	FileUpload			varchar(1000),
+	ISCID               INT             NULL,
+    DueDate             DATE            NULL,
+    Mark                INT             NULL,
+    Comment             varchar(50),
+
+    CONSTRAINT ComponentID_PK PRIMARY KEY (ComponentID),
+    CONSTRAINT 	ASSESSMENT_COMPONENT_ISCFK foreign key (ISCID)
+			references ISC(ISCID)
+);
+
+drop table ASSESSMENT_COMPONENT;
+
+
+CREATE TABLE  READING_LIST
+(
+    ReadingID           INT             NOT NULL  auto_increment,
+    Author              VARCHAR(50)     NULL,
+    Title               VARCHAR(50)     NULL,
+    PublicationDate     DATE            NULL,
+    ISCID               INT             NULL,
+
+    CONSTRAINT ReadingID_PK PRIMARY KEY (ReadingID),
+    CONSTRAINT 	READING_LIST_ISCFK foreign key (ISCID)
+            references ISC(ISCID)
+);
+
+CREATE TABLE EXPECTED_ACTIVITY
+(
+    ActivityID          INT             NOT NULL 	Auto_increment,
+    Name                VARCHAR(100)    NULL,
+    Description         VARCHAR(200)    NULL,
+
+    CONSTRAINT ActivityID_PK PRIMARY KEY (ActivityID)
+);
+
+
+CREATE TABLE ISC_EXPECTED_ACTIVITY
+(
+    ActivityID          INT         NOT NULL,
+    ISCID               INT         NOT NULL,
+
+    CONSTRAINT ActivityID_ISC_PK PRIMARY KEY (ActivityID, ISCID),
+
+
+    CONSTRAINT 	ISC_EXPECTED_ACTIVITY_ACTIVITYFK foreign key (ActivityID)
+					references EXPECTED_ACTIVITY(ActivityID),
+
+    CONSTRAINT 	ISC_EXPECTED_ACTIVITY_ISCFK foreign key (ISCID)
+					references ISC(ISCID)
 );
 
 # Create table for ISC Section C

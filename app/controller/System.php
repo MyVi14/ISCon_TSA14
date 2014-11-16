@@ -13,10 +13,10 @@ class System {
         require_once __DIR__ . '/../includes/phpmailer/class.phpmailer.php';
         
         $mail = new PHPMailer();
-        if ( !$mail->validateAddress($email) ) {
-            echo 'Invalid email address.';
-            exit;
-        }
+//        if ( !$mail->validateAddress($mail) ) {
+//            echo 'Invalid email address.';
+//            exit;
+//        }
         
         // Setting serer information, using free smtp from gmail
         $this->setUpEmailServer($mail);    
@@ -55,6 +55,7 @@ class System {
     
     private function setUpEmailServer($mail = null) {
         if ($mail != null) {
+            
             $mail->isSMTP();                            // Set mailer to use SMTP
             $mail->Host = 'smtp.gmail.com';             // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                     // Enable SMTP authentication

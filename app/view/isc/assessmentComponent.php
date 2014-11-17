@@ -1,4 +1,5 @@
 <?PHP
+    $title = "ISC Assessment Component Page";
     include($headerLink);
     $ISCID = $data["ISCID"];
     $components = $data["components"];

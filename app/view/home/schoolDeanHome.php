@@ -1,4 +1,5 @@
 <?PHP
+    $title = "School Dean Home Page";
     include($headerLink);
 ?>
 

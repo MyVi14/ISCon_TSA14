@@ -1,4 +1,5 @@
 <?PHP
+    $title = "ISC Detail Page";
     include($headerLink);
 ?>
 <?PHP

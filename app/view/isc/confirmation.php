@@ -1,4 +1,5 @@
 <?PHP
+    $title = "Confirmation Page";
     include($headerLink);
 ?>
 

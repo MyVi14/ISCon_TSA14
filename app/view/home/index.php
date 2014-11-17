@@ -1,4 +1,5 @@
 <?PHP
+$title = "Independent Study Contract Portal";
     include($headerLink);
 ?>
 
@@ -26,8 +27,9 @@
                 <a href="/Student-life/_document/Enrolments-and-fees/Independent-Study-Contract-ISC-Application-Form" shape="rect" class="" alt="ISC Application Form" title="ISC Application Form" target="_blank">ISC application form</a> 
                 (word doc) is to be filled in by both the student and the supervisor.
             </p>
-
         </div>
+        <input type='button' name='osx' value='Demo' class='osx demo'/> or <a href='#' class='osx'>Demo</a>
+        
     </div>
 
 <?PHP

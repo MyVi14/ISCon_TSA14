@@ -1,4 +1,5 @@
 <?PHP
+    $title = "Academic Chair Home Page";
     include($headerLink);
 ?>
 

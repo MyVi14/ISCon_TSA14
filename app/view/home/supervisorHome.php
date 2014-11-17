@@ -1,4 +1,5 @@
 <?PHP
+    $title = "Supervisor Home Page";
     include($headerLink);
 ?>
 

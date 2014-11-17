@@ -1,4 +1,5 @@
 <?PHP
+    $title = "Approve ISC Page";
     include($headerLink);
     
     $ISCID = $data["ISCID"];

@@ -1,5 +1,4 @@
 <!-- This page use an object called $ISCObj to set up data, if no such object is found, no data is printed -->
-
 <div id="iscDetails" style="margin-left: 10px">
     <h1> Section B - ISC Details </h1>
     

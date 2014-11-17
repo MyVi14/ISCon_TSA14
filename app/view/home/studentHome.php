@@ -1,4 +1,5 @@
 <?PHP
+    $title = "Student Home Page";
     include($headerLink);
 ?>
 
@@ -8,10 +9,8 @@
         $(document).ready(function(){
             statusArray = $('td[name="statusCell"]');
             
-            
             $.each(statusArray, function (index, cell){
                 status = $(cell).attr("data-applicationStatus");
-                line = "";
                 
                 if(status == "new") {
                     $('[name="btnSubmitISC"]').eq(index).attr("enabled", "true");

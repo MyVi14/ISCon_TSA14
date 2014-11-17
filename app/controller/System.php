@@ -53,6 +53,56 @@ class System {
         
     }
     
+    public function upload($componentID, $fileName,  $fileVariable) {
+        $target_dir = ROOT_PATH . "app/upload/";
+        $target_file = $target_dir . $fileName;
+        $uploadOk = 1;
+        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+        
+        // Check if image file is a actual image or fake image
+//        if(isset($_POST["submit"])) {
+//            $check = getimagesize($_FILES["FileUpload"]["tmp_name"]);
+//            if($check !== false) {
+//                echo "File is an image - " . $check["mime"] . ".";
+//                $uploadOk = 1;
+//            } else {
+//                echo "File is not an image.";
+//                $uploadOk = 0;
+//            }
+//        }
+
+        // Check if file already exists
+        if (file_exists($target_file)) {
+            echo "Sorry, file already exists.";
+            $uploadOk = 0;
+        }
+        // Check file size, not larger than 100mb
+        if ($_FILES[$fileVariable]["size"] > 100000000) {
+            echo "Sorry, your file is too large, not larger than 100mb";
+            $uploadOk = 0;
+        }
+        // Allow certain file formats
+//        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+//                && $imageFileType != "gif" ) {
+//            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+//            $uploadOk = 0;
+//        }
+
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo "Sorry, your file was not uploaded.";
+        // if everything is ok, try to upload file
+        } else {
+            if (move_uploaded_file($_FILES[$fileVariable]["tmp_name"], $target_file)) {
+                $uploadOk = 1;
+            } else {
+                $uploadOk = 0;
+            }
+        }
+        
+        return $uploadOk;
+    }
+    
     private function setUpEmailServer($mail = null) {
         if ($mail != null) {
             

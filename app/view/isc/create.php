@@ -33,9 +33,13 @@ if ( $data == null ) {
     $ISCID = $data["ISCID"];
     unset($data["ISCID"]);
     
-    // udpate ISC detail
-    if ($data != null)
+    // unset all button names
+    unset($data["btnSubmitISC"]);
+    
+    if ($data != null) {
+        // udpate ISC detail
         $iscController->updateISCDetail($ISCID, $data);
+    }
     
     // get ISC object
     $ISCObj = $iscController->getISC($ISCID);
@@ -66,18 +70,12 @@ if ( $data == null ) {
     $status = $iscController->updateISCDetail($ISCID, $data);
     
     if ($status == 1) {
-        echo '1 record is created';
+        echo '<h3> You have successfully submitted one ISC</h3>';
+        echo '<h3>Thank your for your cooperation!</h3>';
     } else {
         echo 'Some error. You can start again';
     }
 }   
-    
-//    var_dump($data);
-//    echo '<br />';
-//    foreach ($data["expectedActivities"] as $value) {
-//        echo $value . " ";
-//    }
-
 
 ?>
 

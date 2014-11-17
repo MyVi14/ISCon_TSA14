@@ -21,12 +21,12 @@
     
     <div class="form-group">
         <label>Phone No</label>
-        <input name="studentEmail" type="text" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getEmail(); ?>" />
+        <input name="studentEmail" type="tel" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getEmail(); ?>" />
     </div>
     
     <div class="form-group">
         <label>Email</label>
-        <input name="studentPhoneNo" type="text" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getPhoneNo(); ?>" />
+        <input name="studentPhoneNo" type="email" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getPhoneNo(); ?>" />
     </div>
 
     <br />

@@ -32,7 +32,15 @@
                 $("#supervisorHomeForm").attr("action", url);
             });
             
-            
+            $('[name="btnViewComponents"]').click(function(e){         
+                var url = $("#supervisorHomeForm").attr("action");
+                url += "ISCController/assessmentComponent/";
+                url += $(this).attr("data-iscid");
+                url += "/supervisor";
+                
+                // set new action attribute
+                $("#supervisorHomeForm").attr("action", url);
+            });
             
         });
     </script>
@@ -59,7 +67,7 @@
             <td><button name="btnViewDetails" data-iscid="<?PHP echo $isc->getISCID(); ?>"> View Details </button> </td>
             <td><button name="btnApprove" data-iscid="<?PHP echo $isc->getISCID(); ?>"> Approve </button> </td>
             <td><button name="btnDisapprove" data-iscid="<?PHP echo $isc->getISCID(); ?>"> Not Approve </button> </td>
-            <td><button name="btnSubmitComponents" data-iscid="<?PHP echo $isc->getISCID(); ?>"> View Assessment Components </button> </td>
+            <td><button name="btnViewComponents" data-iscid="<?PHP echo $isc->getISCID(); ?>"> View Assessment Components </button> </td>
           </tr>
         <?PHP } ?>
 

@@ -21,10 +21,6 @@
                 }
             });
         
-            
-            status = $('td[name="statusCell"]').eq(2).attr("data-applicationStatus");
-            
-            
             $('[name="btnViewDetails"]').click(function(e){         
                 var url = $("#studentHomeForm").attr("action");
                 url += "get/";
@@ -37,24 +33,21 @@
             
             $('[name="btnSubmitComponents"]').click(function(e){         
                 var url = $("#studentHomeForm").attr("action");
-                url += "submitComponents/";
+                url += "assessmentComponent/";
                 url += $(this).attr("data-iscid");
-                
+                url += "/student";
                 // set new action attribute
                 $("#studentHomeForm").attr("action", url);
             });
             
             $('[name="btnSubmitISC"]').click(function(e){         
                 var url = $("#studentHomeForm").attr("action");
-                url += "create";
+                url += "create?section=B";
                 
                 // set new action attribute
                 $("#studentHomeForm").attr("action", url);
-            });
-            
-            
+            }); 
         });
-        
     </script>
     <button><a href="<?PHP echo BASE_URL . 'public/ISCController/create'; ?>"> Create new ISC </a> </button>
     
@@ -64,13 +57,12 @@
             <th>ISC ID</th>
             <th>Application Type</th>
             <th>Created Date</th> 
-            <th>Status</th>
-            
+            <th>Status</th> 
           </tr>
           
         <?PHP foreach ($data as $isc) { ?>
           <tr>
-            <td> <?PHP echo $isc->getISCID(); ?><input type="hidden" name="ISCID" value=" <?PHP echo $isc->getISCID(); ?>" /> </td>
+            <td> <?PHP echo $isc->getISCID(); ?><input type="hidden" name="ISCID" value="<?PHP echo $isc->getISCID(); ?>" /> </td>
             <td> <?PHP echo $isc->getApplicationType(); ?> </td>
             <td> <?PHP echo $isc->getCreatedDate(); ?> </td>
             <td name="statusCell" data-applicationStatus="<?PHP echo $isc->getApplicationStatus(); ?>"> <?PHP echo $isc->getApplicationStatus(); ?> </td>
@@ -81,7 +73,6 @@
         <?PHP } ?>
 
         </table>
-
     </form>
     
 </div>

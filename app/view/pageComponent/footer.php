@@ -32,11 +32,11 @@
 <div id="device-xs" class="visible-xs"></div>
 
 <script src="https://static.murdoch.edu.au/irespond/js/3.1.0/bootstrap.min.js"></script>
-
 <script src="https://static.murdoch.edu.au/irespond/js/3.1.0/application.js"></script>
 
 <!-- [ END FOOTER ]-->
 
 </div>
+
 </body>
 </html>

@@ -33,7 +33,7 @@
         <td><input type="text" name="supervisorGivenName" value="<?PHP if(isset($supervisor["givenName"])) echo $supervisor["givenName"] ?>" /></td> 
         <td><input type="text" name="supervisorPosition" value="<?PHP if(isset($supervisor["position"])) echo $supervisor["position"] ?>" /></td>
         <td><input type="text" name="supervisorSchool" value="<?PHP if(isset($supervisor["school"])) echo $supervisor["school"] ?>"/></td>
-        <td><input type="text" name="supervisorEmail" value="<?PHP if(isset($supervisor["email"])) echo $supervisor["email"] ?>"/></td>
+        <td><input type="email" name="supervisorEmail" value="<?PHP if(isset($supervisor["email"])) echo $supervisor["email"] ?>"/></td>
       </tr>
     </table>
     
@@ -204,7 +204,7 @@
           <td><input type="text" name="academicChairSurname" value="<?PHP if(isset($academicChair["surname"])) echo $academicChair["surname"] ?>"></td>
           <td><input type="text" name="academicChairGivenName" value="<?PHP if(isset($academicChair["givenName"])) echo $academicChair["givenName"] ?>"></td>
           <td><input type="text" name="academicChairUnitCode" value="<?PHP if(isset($academicChair["unitCode"])) echo $academicChair["unitCode"] ?>"></td>
-          <td><input type="text" name="academicChairEmail" value="<?PHP if(isset($academicChair["email"])) echo $academicChair["email"] ?>"></td>
+          <td><input type="email" name="academicChairEmail" value="<?PHP if(isset($academicChair["email"])) echo $academicChair["email"] ?>"></td>
       </tr>
     </table>
     </div>
@@ -468,7 +468,7 @@
           <td><input type="text" name="schoolDeanSurname" value="<?PHP if(isset($schoolDean["surname"])) echo $schoolDean["surname"] ?>"></td>
           <td><input type="text" name="schoolDeanGivenName" value="<?PHP if(isset($schoolDean["givenName"])) echo $schoolDean["givenName"] ?>"></td>
           <td><input type="text" name="schoolDeanSchool" value="<?PHP if(isset($schoolDean["school"])) echo $schoolDean["school"] ?>"></td>
-          <td><input type="text" name="schoolDeanEmail" value="<?PHP if(isset($schoolDean["email"])) echo $schoolDean["email"] ?>"></td>
+          <td><input type="email" name="schoolDeanEmail" value="<?PHP if(isset($schoolDean["email"])) echo $schoolDean["email"] ?>"></td>
       </tr>
     </table>
     

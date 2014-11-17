@@ -23,6 +23,13 @@ class ISCController extends Controller {
         $this->view('isc/detail', ["ISCID" => $ISCID, "who" => $who]);
     }
     
+    public function assessmentComponent($ISCID = '', $who = '') {
+        $ISC = $this->model('ISCDetail');
+        
+        $components = $ISC->retrieveAssessmentComponents($ISCID);
+        $this->view('isc/assessmentComponent', ["ISCID" => $ISCID, "components" => $components, "who" => $who]);
+    }
+    
     public function createISC($newISC = []) {
         $ISC = $this->model('ISCDetail');
             
@@ -113,9 +120,11 @@ class ISCController extends Controller {
                                 $ISC["schoolDeanSchool"], 
                                 $ISC["schoolDeanEmail"]);
         
-        // expected activities
-        foreach($ISC["expectedActivities"] as $expectedActivity) {
-            $ISCDetail->addExpectedActivity($expectedActivity, "");
+        if (isset($ISC["expectedActivities"])) {
+            // expected activities
+            foreach($ISC["expectedActivities"] as $expectedActivity) {
+                $ISCDetail->addExpectedActivity($expectedActivity, "");
+            }
         }
         
         // reading list
@@ -126,7 +135,7 @@ class ISCController extends Controller {
         // assessment components
         for($index = 0; $index < count($ISC["number"]); $index++ ) {
             $ISCDetail->addAssessmentCommponent($ISC["componentDescription"][$index], $ISC["componentWordLength"][$index], 
-                                                $ISC["componentPercentage"][$index], $ISC["componentDueDate"][$index]);
+                                                $ISC["componentPercentage"][$index], $ISC["componentDueDate"][$index], '');
             
         }
         
@@ -146,10 +155,6 @@ class ISCController extends Controller {
         return $ISCDetail;
     }
     
-    public function submit($ISCID='', $who = '') {
-        
-    }
-    
     public function approve($ISCID = '', $who = '') {
         $ISCModel = $this->model('ISCDetail');
         if ($ISCID != '' && $who != '')
@@ -162,9 +167,37 @@ class ISCController extends Controller {
             $ISCModel->disapproveISC($ISCID, $who);
     }
     
-    public function submitComponents($ISCID = '', $components = []) {
-        echo 'submit components;';
+    public function submitComponent($componentID = '', $component = []) {
+        require_once 'System.php';
+        
+        $ISCID = $component["ISCID"];
+        $fileName = $componentID . "-" . basename($_FILES["FileUpload"]["name"]);
+        
+        $system = new System();
+        
+        // upload file
+        $status = $system->upload($componentID, $fileName, "FileUpload");
+        
+        // save to database
+        if ($status == 1) {
+            $ISCModel = $this->model('ISCDetail');
+            $editedRecord = $ISCModel->saveAssessmentComponentFileUpload($componentID, $fileName);
+            
+            header("Location: " . $_SERVER['HTTP_REFERER']);
+            
+            $editedRecord = $ISCModel->saveAssessmentComponentFileUpload($componentID, $fileName);
+        }
     }
     
-}
+    public function submitResult($componentID, $result = []) {
+        $mark = trim($result["mark" . $componentID]);
+        $comment = trim($result["comment" . $componentID]);
+        
+        $ISCModel = $this->model('ISCDetail');
+        $editedRecord = $ISCModel->submitResult($componentID, $mark, $comment);
+        
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+    }
+    
+} // end ISCController
 

@@ -55,6 +55,18 @@ class ISCDetail extends ISC {
         return ISCDA::getISC($ISCID);
     }
     
+    public static function retrieveAssessmentComponents($ISCID) {
+        return ISCDA::retrieveAssessmentComponents($ISCID);
+    }
+    
+    public static function saveAssessmentComponentFileUpload($componentID, $fileName) {
+        return ISCDA::saveAssessmentComponentFileUpload($componentID, $fileName);
+    }
+    
+    public static function submitResult($componentID, $mark, $comment) {
+        return ISCDA::submitResult($componentID, $mark, $comment);
+    }
+    
     public function addReplacement($unitCode, $title, $coreOrElective) {
         $replacement = array("unitCode" => $unitCode, "title" => $title, "coreOrElective" => $coreOrElective);
         
@@ -71,9 +83,9 @@ class ISCDetail extends ISC {
         array_push($this->readingList, $readingList);
     }
     
-    public function addAssessmentCommponent($description, $wordLength, $percentage, $dueDate) {
+    public function addAssessmentCommponent($description, $wordLength, $percentage, $dueDate, $fileUpload) {
         $assessmentComponent = array("description" => $description, "wordLength" => $wordLength, 
-                                    "percentage" => $percentage, "dueDate" => $dueDate);
+                                    "percentage" => $percentage, "dueDate" => $dueDate, "fileUpload" => $fileUpload);
         array_push($this->assessmentComponents, $assessmentComponent);
     }
     

@@ -213,7 +213,7 @@ class ISCDA {
             $components = $PDOConn->query("select * from Assessment_Component where ISCID = '".$ISCID."';");
             
             foreach ($components as $row) {
-                $ISCDetail->addAssessmentCommponent($row["Description"], $row['WordLength'], $row['Percentage'], $row['DueDate']);
+                $ISCDetail->addAssessmentCommponent($row["Description"], $row['WordLength'], $row['Percentage'], $row['DueDate'], '');
             }
             
             // set replacement unit if applicable
@@ -319,6 +319,53 @@ class ISCDA {
         }
             
         return $status;    
+    } // end updateISCDetail();
+    
+    public static function retrieveAssessmentComponents($ISCID) {
+        // connect to database
+        $PDOConn = Connection::getConnection();
+        
+        $components = array();
+        try { 
+            $assessmentComponents = $PDOConn->query("select * from Assessment_Component where ISCID='".$ISCID."'");
+
+            $components = $assessmentComponents->fetchAll();
+        } catch(Exeption $e) {
+            echo $query . ' :Cannot get assessment components!';
+            exit;
+        }
+        
+        return $components;
+    }
+    
+    public static function saveAssessmentComponentFileUpload($ComponentID, $fileName) {
+        // connect to database
+        $PDOConn = Connection::getConnection();
+        
+        try {
+            $editedRecord = $PDOConn->exec("update Assessment_Component set FileUpload='".$fileName."' where ComponentID='" . $ComponentID . "'");
+        } catch (Exception $ex) {
+            echo $query . ' :Cannot update assessment component file upload!';
+            echo $ex->getMessage();
+            exit;
+        }
+        
+        return $editedRecord;
+    }
+    
+    public static function submitResult($ComponentID, $mark, $comment) {
+        // connect to database
+        $PDOConn = Connection::getConnection();
+        
+        try {
+            $editedRecord = $PDOConn->exec("update Assessment_Component set Mark='".$mark."', Comment='".$comment."' where ComponentID='" . $ComponentID . "'");
+        } catch (Exception $ex) {
+            echo $query . ' :Cannot submit result!';
+            echo $ex->getMessage();
+            exit;
+        }
+        
+        return $editedRecord;
     }
     
     private function updateISCSupervisor($ISCID, $supervisor=[]) {
@@ -508,8 +555,6 @@ class ISCDA {
             }
         }
     }
-    
-    
-        
+
 } // end ISCDA class
 

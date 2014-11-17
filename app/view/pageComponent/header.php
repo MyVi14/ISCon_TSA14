@@ -31,17 +31,39 @@
 <script type="text/javascript" src="https://static.murdoch.edu.au/lib/jquery/1.11.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://static.murdoch.edu.au/lib/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript" src="https://my.murdoch.edu.au/resource/lib/jquery.lpaf.js"></script>
-
 <script id="yui__dyn_0" type="text/javascript" charset="utf-8" src="https://myanswers.widget.custhelp.com/ci/ws/get/w/3/co/%5B%7B%22div_id%22%3A%22myanswers-faqs%22%2C%22instance_id%22%3A%22skw_0%22%2C%22module%22%3A%22KnowledgeSyndication%22%2C%22target%22%3A%22_blank%22%2C%22type%22%3A3%7D%5D/https_request/1"></script>
 
 <link id="yui__dyn_1" type="text/css" charset="utf-8" rel="stylesheet" href="https://myanswers.widget.custhelp.com/euf/assets/css/syndicated_widgets/standard/KnowledgeSyndication.css">
 
+<!--[ Additional stype ] -->
+
+<!-- OSX Style CSS files -->
+<link type='text/css' href='<?PHP echo BASE_URL . "public/css/osx.css" ?>' rel='stylesheet' media='screen' />
+<style>
+       
+        .back-to-top {
+            position: fixed;
+            bottom: 2em;
+            right: 0px;
+            text-decoration: none;
+            color: #000000;
+            background-color: rgba(235, 235, 235, 0.80);
+            font-size: 12px;
+            padding: 1em;
+            display: none;
+        }
+
+        .back-to-top:hover {	
+            background-color: rgba(135, 135, 135, 0.50);
+        }
+</style>
 </head>
 <!--[ END HEADER ] -->
 
 <body>
 <!-- [ BEGIN CONTENT AREA ]--> 
-<div id="_lpaf_portlet_2" class="portlet portlet-plain"><script>
+<div id="_lpaf_portlet_2" class="portlet portlet-plain">
+    <script>
          var gaid = 'UA-55452205-1';
          
          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -51,7 +73,7 @@
 
          ga('create', gaid, 'murdoch.edu.au');
          ga('send', 'pageview');
-         </script>
+    </script>
 </div>
 
 <a class="sr-only" href="#content">Skip navigation</a>

@@ -83,6 +83,7 @@
             <td>
                 <?PHP if($component["FileUpload"] == null) { ?>
                     <button name="submitComponent"> Submit component</button>
+                    
                     <br />
                     <button name="btnSubmitComponent" data-componentid="<?PHP echo $component['ComponentID']; ?>" > Submit </button>
                 <?PHP } else {

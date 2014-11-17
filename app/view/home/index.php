@@ -28,7 +28,6 @@ $title = "Independent Study Contract Portal";
                 (word doc) is to be filled in by both the student and the supervisor.
             </p>
         </div>
-        <input type='button' name='osx' value='Demo' class='osx demo'/> or <a href='#' class='osx'>Demo</a>
         
     </div>
 

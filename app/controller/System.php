@@ -9,53 +9,9 @@
  */
 class System {
     
-    public function sendEmail($from='', $fromName='', $subject='', $body='', $to='', $toName='', $attachment=[]) {
-        require_once __DIR__ . '/../includes/phpmailer/class.phpmailer.php';
-        
-        $mail = new PHPMailer();
-//        if ( !$mail->validateAddress($mail) ) {
-//            echo 'Invalid email address.';
-//            exit;
-//        }
-        
-        // Setting serer information, using free smtp from gmail
-        $this->setUpEmailServer($mail);    
-        
-        // add sender
-        $mail->From = $from;
-        $mail->FromName = $fromName;
-        
-        // Add a recipient, Name is optional
-        if ($toName != null) {
-            $mail->addAddress($to, $toName);
-        }
-        else {
-            $mail->addAddress($to);
-        }
-
-        $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
-        //$mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-        //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-        $mail->isHTML(true);                                  // Set email format to HTML
-
-        $mail->Subject = $subject;
-        $mail->Body    = $body;
-
-        if(!$mail->send()) {
-            echo 'Message could not be sent.';
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
-        } else {
-            echo 'Message has been sent';
-        }
-    } // end sendEmail()
-    
-    public function convertResultToExcel() {
-        
-    }
-    
     public function upload($componentID, $fileName,  $fileVariable) {
         $target_dir = ROOT_PATH . "app/upload/";
-        $target_file = $target_dir . $fileName;
+        $target_file = $target_dir . $componentID. $fileName;
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
         
@@ -102,6 +58,76 @@ class System {
         
         return $uploadOk;
     }
+    
+    public function email($data = []) {
+        
+        $from= $data["fromEmail"]; 
+        $fromName=$data["fromName"];
+        $to=$data["toEmail"];
+        $toName=$data["toName"];
+        $subject=$data["subject"]; 
+        $body=$data["body"];
+        
+//        $fileName = basename($_FILES["emailAttachment"]["name"]);
+//        $target_dir = ROOT_PATH . "app/upload/";
+//        $target_file = $target_dir . $fileName;
+//        // upload file
+//        $status = $this->upload('', $fileName, "emailAttachment");
+        
+        if ($from != '' && $to != '' && $body != '') {
+            $this->sendEmail($from, $fromName, $subject, $body, $to, $toName);
+        }
+    }
+    
+    private function sendEmail($from='', $fromName='', $subject='', $body='', $to='', $toName='', $attachments=[]) {
+        require_once __DIR__ . '/../includes/phpmailer/class.phpmailer.php';
+        
+        $mail = new PHPMailer();
+//        if ( !$mail->validateAddress($mail) ) {
+//            echo 'Invalid email address.';
+//            exit;
+//        }
+        
+        // Setting serer information, using free smtp from gmail
+        $this->setUpEmailServer($mail);    
+        
+        // add sender
+        $mail->From = $from;
+        $mail->FromName = $fromName;
+        
+        // Add a recipient, Name is optional
+        if ($toName != null) {
+            $mail->addAddress($to, $toName);
+        }
+        else {
+            $mail->addAddress($to);
+        }
+
+        $mail->WordWrap = 50;                                 // Set word wrap to 50 characters
+        // Add attachments
+        foreach ($attachments as $targetfile) {
+            $mail->addAttachment($targetfile);
+        }
+        
+        //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+        $mail->isHTML(true);                                  // Set email format to HTML
+
+        $mail->Subject = $subject;
+        $mail->Body    = $body;
+
+        if(!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            echo 'Message has been sent';
+        }
+    } // end sendEmail()
+    
+    public function convertResultToExcel() {
+        
+    }
+    
+    
     
     private function setUpEmailServer($mail = null) {
         if ($mail != null) {

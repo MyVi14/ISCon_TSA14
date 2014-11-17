@@ -6,7 +6,7 @@
 <?PHP
 
 if ( $data == null ) {
-    echo '<form action="'.BASE_URL . 'public/ISCController/create?section=A'.'" method="POST" role="form">';
+    echo '<form action="'.BASE_URL . 'public/ISCController/create?section=A'.'" method="POST" role="form" class="form-horizontal">';
     include_once dirname(__FILE__). '/../iscDetail/personalDetails.php';
         echo '<input type="submit" value="Submit" />';
         echo '<input type="reset" value="Reset" />';
@@ -18,7 +18,7 @@ if ( $data == null ) {
     $newISCID = $iscController->createISC($data);
     
     // show ISC details
-    echo '<form action="'.BASE_URL . 'public/ISCController/create?section=B'.'" method="POST" role="form">';
+    echo '<form action="'.BASE_URL . 'public/ISCController/create?section=B'.'" method="POST" role="form" class="form-horizontal">';
     include_once dirname(__FILE__). '/../iscDetail/iscDetails.php';
         echo '<input type="hidden" value="'.$newISCID.'" name="ISCID" />';
         echo '<input type="submit" value="Submit" />';
@@ -45,7 +45,7 @@ if ( $data == null ) {
     // get ISC object
     $ISCObj = $iscController->getISC($ISCID);
     
-    echo '<form action="'.BASE_URL . 'public/ISCController/create?section=submit'.'" method="POST" role="form">';
+    echo '<form action="'.BASE_URL . 'public/ISCController/create?section=submit'.'" method="POST" role="form" class="form-horizontal">';
     // show the submit page including showing all details
     include_once dirname(__FILE__). '/../iscDetail/personalDetails.php';
     include_once dirname(__FILE__). '/../iscDetail/iscDetails.php';

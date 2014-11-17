@@ -1,5 +1,8 @@
 
-
+<?PHP
+    $title = "Give Reason for not approving";
+    include_once $headerLink;
+?>
 <!-- ISC Form - Start Reason Part -->
 <div id="declaration">
 	
@@ -13,30 +16,6 @@
 </div>
 <!-- ISC Form - End Reason Part -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<?PHP
+    include_once $footerLink;
+?>

@@ -9,14 +9,11 @@
  */
 class ISCController extends Controller {
     
+    /* Interface functions. Will appear on URL */
+    
     public function create($newISC = []) {
         $this->view('isc/create', $newISC);
         
-//        if($newISC == NULL) {
-//            $this->view('isc/create', null);
-//        } else {   
-//            //header("Location: " . BASE_URL . "public/home/student");
-//        }
     }
     
     public function get($ISCID = '', $who = '') {
@@ -29,6 +26,38 @@ class ISCController extends Controller {
         $components = $ISC->retrieveAssessmentComponents($ISCID);
         $this->view('isc/assessmentComponent', ["ISCID" => $ISCID, "components" => $components, "who" => $who]);
     }
+    
+    public function submitComponent($componentID = '', $component = []) {
+        require_once 'System.php';
+        
+        $ISCID = $component["ISCID"];
+        $fileName = $componentID . "-" . basename($_FILES["FileUpload"]["name"]);
+        
+        $system = new System();
+        
+        // upload file
+        $status = $system->upload($componentID, $fileName, "FileUpload");
+        
+        // save to database
+        if ($status == 1) {
+            $ISCModel = $this->model('ISCDetail');
+            $editedRecord = $ISCModel->saveAssessmentComponentFileUpload($componentID, $fileName);
+            
+            header("Location: " . $_SERVER['HTTP_REFERER']);
+        }
+    }
+    
+    public function submitResult($componentID, $result = []) {
+        $mark = trim($result["mark" . $componentID]);
+        $comment = trim($result["comment" . $componentID]);
+        
+        $ISCModel = $this->model('ISCDetail');
+        $editedRecord = $ISCModel->submitResult($componentID, $mark, $comment);
+        
+        header("Location: " . $_SERVER['HTTP_REFERER']);
+    }
+    
+    /* Support functions */
     
     public function createISC($newISC = []) {
         $ISC = $this->model('ISCDetail');
@@ -46,8 +75,6 @@ class ISCController extends Controller {
         
         return $newISCID;
     }
-    
-    
     
     public function getISCList() {
         $ISC = $this->model('ISC');
@@ -167,37 +194,7 @@ class ISCController extends Controller {
             $ISCModel->disapproveISC($ISCID, $who);
     }
     
-    public function submitComponent($componentID = '', $component = []) {
-        require_once 'System.php';
-        
-        $ISCID = $component["ISCID"];
-        $fileName = $componentID . "-" . basename($_FILES["FileUpload"]["name"]);
-        
-        $system = new System();
-        
-        // upload file
-        $status = $system->upload($componentID, $fileName, "FileUpload");
-        
-        // save to database
-        if ($status == 1) {
-            $ISCModel = $this->model('ISCDetail');
-            $editedRecord = $ISCModel->saveAssessmentComponentFileUpload($componentID, $fileName);
-            
-            header("Location: " . $_SERVER['HTTP_REFERER']);
-            
-            $editedRecord = $ISCModel->saveAssessmentComponentFileUpload($componentID, $fileName);
-        }
-    }
     
-    public function submitResult($componentID, $result = []) {
-        $mark = trim($result["mark" . $componentID]);
-        $comment = trim($result["comment" . $componentID]);
-        
-        $ISCModel = $this->model('ISCDetail');
-        $editedRecord = $ISCModel->submitResult($componentID, $mark, $comment);
-        
-        header("Location: " . $_SERVER['HTTP_REFERER']);
-    }
     
 } // end ISCController
 

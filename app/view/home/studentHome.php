@@ -48,7 +48,8 @@
             }); 
         });
     </script>
-    <button><a href="<?PHP echo BASE_URL . 'public/ISCController/create'; ?>"> Create new ISC </a> </button>
+    <br />
+    <p><button><a href="<?PHP echo BASE_URL . 'public/ISCController/create'; ?>"> Create new ISC </a> </button></p>
     
     <form action="<?PHP echo BASE_URL . 'public/ISCController/'; ?>" method="POST" id="studentHomeForm">
         <table name="" class="table table-hover" >

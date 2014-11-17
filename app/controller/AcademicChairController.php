@@ -22,6 +22,6 @@ class AcademicChairController extends Controller {
             $this->view('isc/confirmation', ["confirmation" => $confirmation]);
         }
     }
-}
+} // end AcademicChairController
 ?>
 

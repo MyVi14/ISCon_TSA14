@@ -1,7 +1,7 @@
 /* Create a new database or schema */
 
 USE ISCON;
-drop view ISCView;
+
 /* Create Views */
 
 create view ISCView
@@ -26,18 +26,6 @@ as select * from Reading_List;
 create view ISCSupervisorAnswerView
 as select * from ISC_Supervisor_Answer;
 
-select * from ISCSupervisorAnswerView;
-select * from school_dean;
-
-select * from ISCExpectedActivityView where ISCID = 33;
-select * from ISCView where ISCID=111;
- where ISCID=33;
-update assessment_component 
-set FileUpload = 'life.jpg'
-where ISCID = 33;
-select * from Assessment_Component;
-select * from study_mode;
-select * from study_period;
 
 
 

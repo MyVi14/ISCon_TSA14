@@ -74,5 +74,5 @@ class SupervisorController extends Controller {
     public function submitResults() {
         
     }
-}
+} // end SupervisorController
 

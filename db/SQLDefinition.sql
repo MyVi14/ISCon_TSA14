@@ -159,7 +159,6 @@ CREATE TABLE REPLACEMENT
                     references ISC(ISCID)
 );
 
-
 CREATE TABLE ASSESSMENT_COMPONENT
 (
     ComponentID         INT             NOT NULL  auto_increment,
@@ -176,7 +175,6 @@ CREATE TABLE ASSESSMENT_COMPONENT
     CONSTRAINT 	ASSESSMENT_COMPONENT_ISCFK foreign key (ISCID)
 			references ISC(ISCID)
 );
-
 
 
 CREATE TABLE  READING_LIST

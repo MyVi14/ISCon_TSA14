@@ -1,13 +1,7 @@
 /* Create a new database or schema */
 
 USE ISCON;
-set @newVariable = -1;
-call CreateNewISC('Undergraduate', 'new', 'Tony', 'Tieu Ha Phong', '2342342', 'tieuhaphong91@gmail.com', '81090025', 'no', 'yes', @newVariable);
-select * from ISC;
 
-select * from isc;
-select * from isc_detail;
-drop procedure CreateNewISC;
 # Create procedure for inserting new ISC
 Delimiter //
 
@@ -42,7 +36,6 @@ END
 //
 
 DELIMITER ;
-drop procedure UpdateISC;
 
 # Create procedure for updating ISC
 Delimiter //
@@ -104,9 +97,8 @@ END
 //
 
 DELIMITER ;
-select * from supervisor;
-insert into supervisor (ISCID) VALUES (3);
-call UpdateISCSupervisor(3, 'suptit', 'surname', 'givenname', 'position', 'school', 'email');
+
+#call UpdateISCSupervisor(3, 'suptit', 'surname', 'givenname', 'position', 'school', 'email');
 
 # Create procedure for updating ISC associate supervisor
 Delimiter //
@@ -183,11 +175,6 @@ END
 //
 
 DELIMITER ;
-drop procedure DeleteOldISCExpectedActivity;
-select * from ISC_expected_activity;
-call DeleteOldISCExpectedActivity(30);
-select * from Expected_activity;
-call UpdateISCExpectedActivity(28, 'Interviews', '');
 
 # procedure for deleting old ISC expected activities
 Delimiter //
@@ -257,18 +244,6 @@ END label
 
 DELIMITER ;
 
-delete
-from Expected_Activity
-where ActivityID = 7;
-
-delete
-from ISC_Expected_Activity
-where ActivityID = 7 and ISCID = 3;
- 
-
-call AddISCExpectedActivity(4, 'Library Research', '');
-select * from expected_activity;
-select * from isc_expected_activity;
 
 # procedure for deleting old ISC reading list
 Delimiter //
@@ -299,9 +274,6 @@ END label
 //
 
 DELIMITER ;
-drop procedure AddISCReadingList;
-call AddISCReadingList(3, 'author', 'title', '2012-12-3');
-select * from reading_list;
 
 # procedure for deleting old ISC replacement
 Delimiter //
@@ -333,12 +305,6 @@ END label
 
 DELIMITER ;
 
-call AddISCReplacement(3, 'ICt33', 'adsf', 'core');
-
-drop procedure UpdateISCAssessmentComponent;
-select * from assessment_component;
-select * from replacement;
-
 # procedure for deleting old ISC replacement
 Delimiter //
 
@@ -369,7 +335,7 @@ END label
 //
 
 DELIMITER ;
-select * from ISC_Detail;
+
 # create procedure for adding ISC detail
 Delimiter //
 
@@ -408,13 +374,8 @@ END label
 //
 
 DELIMITER ;
-drop procedure UpdateISCDetails;
-call UpdateISCDetails(27, 'courename', 3, 'title', 'no', 'learning objectives', 'project outline', 'previous study', 'previous experience', 700, 'mode', 'campus', 'period');
 
-select * from ISC_Detail;
-select * from supervisor;
-select * from associate_supervisor;
-select * from school_dean;
+#call UpdateISCDetails(27, 'courename', 3, 'title', 'no', 'learning objectives', 'project outline', 'previous study', 'previous experience', 700, 'mode', 'campus', 'period');
 
 # create procedure for adding ISC Supervisor Answer
 Delimiter //
@@ -433,6 +394,6 @@ END label
 //
 
 DELIMITER ;
-select * from ISC_SUPERVISOR_ANSWER;
-INSERT INTO `iscon`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Commment`)
-	VALUES(30, 'item1', 'yes', '', '');
+
+-- INSERT INTO `iscon`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Commment`)
+-- 	VALUES(30, 'item1', 'yes', '', '');

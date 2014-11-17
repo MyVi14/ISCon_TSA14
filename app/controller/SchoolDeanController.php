@@ -27,6 +27,6 @@ class SchoolDeanController extends Controller {
     public function reason($ISCID) {
         $this->view("pageComponent/reason", ["ISCID" => $ISCID]);
     }
-}
+} // end SchoolDeanController
 ?>
 

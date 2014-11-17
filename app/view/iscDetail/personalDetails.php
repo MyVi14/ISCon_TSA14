@@ -1,8 +1,8 @@
 <!-- This page use an object called $ISCObj to set up data, if no such object is found, no data is printed -->
 
 <!-- ISC Form - Start Section A -->
-<div id="personalDetails" style="margin-left: 10px">
-    <h1> Section A - Personal Details</h1>
+<div id="personalDetails" style="margin-left: 10px" >
+    <h1 class="bg-warning"> Section A - Personal Details</h1>
 
     <div class="form-group">
         <label>Student Number</label>

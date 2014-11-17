@@ -25,7 +25,7 @@
 <div class="container">
     
     
-    <h3> Section C - Supervisor </h3>
+    <h3 class="bg-warning"> Section C - Supervisor </h3>
 
     <table class="table table-hover">
     <tr>

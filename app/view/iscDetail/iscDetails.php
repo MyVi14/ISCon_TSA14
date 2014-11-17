@@ -1,9 +1,9 @@
 <!-- This page use an object called $ISCObj to set up data, if no such object is found, no data is printed -->
 <div id="iscDetails" style="margin-left: 10px">
-    <h1> Section B - ISC Details </h1>
+    <h1 class="bg-warning"> Section B - ISC Details </h1>
     
-    <h3>1. Course </h3>
-    <input type="text" size="50" name="courseName" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getCourseName(); ?>" />
+    <h3 style="display: inline;">1. Course </h3>
+    <input type="text" size="50" name="courseName" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getCourseName(); ?>" placeholder="course name"/>
     
     <hr />
     
@@ -27,12 +27,12 @@
       </tr>
 
       <tr>
-        <td><input type="text" name="supervisorTitle" value="<?PHP if(isset($supervisor["title"])) echo $supervisor["title"] ?>"/></td>
-        <td><input type="text" name="supervisorSurname" value="<?PHP if(isset($supervisor["surname"])) echo $supervisor["surname"] ?>" /></td>
-        <td><input type="text" name="supervisorGivenName" value="<?PHP if(isset($supervisor["givenName"])) echo $supervisor["givenName"] ?>" /></td> 
-        <td><input type="text" name="supervisorPosition" value="<?PHP if(isset($supervisor["position"])) echo $supervisor["position"] ?>" /></td>
-        <td><input type="text" name="supervisorSchool" value="<?PHP if(isset($supervisor["school"])) echo $supervisor["school"] ?>"/></td>
-        <td><input type="email" name="supervisorEmail" value="<?PHP if(isset($supervisor["email"])) echo $supervisor["email"] ?>"/></td>
+          <td><input type="text" name="supervisorTitle" value="<?PHP if(isset($supervisor["title"])) echo $supervisor["title"] ?>" placeholder="title"/></td>
+          <td><input type="text" name="supervisorSurname" value="<?PHP if(isset($supervisor["surname"])) echo $supervisor["surname"] ?>" placeholder="surname"/></td>
+          <td><input type="text" name="supervisorGivenName" value="<?PHP if(isset($supervisor["givenName"])) echo $supervisor["givenName"] ?>" placeholder="given name"/></td> 
+          <td><input type="text" name="supervisorPosition" value="<?PHP if(isset($supervisor["position"])) echo $supervisor["position"] ?>" placeholder="position"/></td>
+          <td><input type="text" name="supervisorSchool" value="<?PHP if(isset($supervisor["school"])) echo $supervisor["school"] ?>" placeholder="school"/></td>
+          <td><input type="email" name="supervisorEmail" value="<?PHP if(isset($supervisor["email"])) echo $supervisor["email"] ?>" placeholder="email"/></td>
       </tr>
     </table>
     
@@ -67,7 +67,7 @@
     <h3> 5. Study Period and Campus </h3>
     <label>Tick the boxes to indicate the teaching period in which you will undertake the ISC, and the appropriate campus.</label>
 
-    <table class="table">
+    <table class="table table-hover">
       <tr>
         <th>Teaching Period</th>
         <th>Contract Starts</th> 
@@ -117,7 +117,7 @@
       </tr>
     </table>
     
-    <h3> Select campus </h3>
+    <h3 style="display: inline;"> Select campus: </h3>
     
     <input type="radio" name="campusLocation" value="SouthSt" <?PHP if(isset($ISCObj) && ($ISCObj->getCampusLocation() == 'SouthSt')) echo 'checked="checked"'; ?> > SouthSt &nbsp;&nbsp;&nbsp;
     <input type="radio" name="campusLocation" value="Rockingham" <?PHP if(isset($ISCObj) && ($ISCObj->getCampusLocation() == 'Rockingham')) echo 'checked="checked"'; ?> > Rockingham &nbsp;&nbsp;&nbsp;

@@ -36,17 +36,22 @@ class Authentication {
                 'content' => json_encode($postContent)
             )
         ));
-
+       
         // Send the request
         $response = file_get_contents($url, FALSE, $context);
 
         // Check for errors
         if($response === FALSE){
-            die('Error');
-        }
+            $responseData = FALSE;
+        } else {
+            // get JSON string
+            $position1 = strpos($response, "{");
+            $position2 = strripos($response, "}");
+            $response = substr($response, $position1, $position2 - $position1 + 1);
 
-        // Decode the response
-        $responseData = json_decode($response, TRUE);
+            // Decode the response
+            $responseData = json_decode($response, TRUE);
+        }
 
         return $responseData;
     }

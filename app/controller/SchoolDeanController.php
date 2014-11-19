@@ -12,20 +12,34 @@ class SchoolDeanController extends Controller {
         }
     }
     
-    public function disapprove($ISCID, $data = []) {
+    public function disapprove($data = []) {
+        $ISCID = $data["ISCID"];
+        $reason = $data["reason"];
+        
         $ISCModel = $this->model("ISC");
         
-        $ISCModel->giveReason($ISCID, $data["reason"]);
+        $ISCModel->giveReason($ISCID, $reason);
         $status = $ISCModel->disapproveISC($ISCID, "school dean");
         
         if($status == 1) {
-            $confirmation = "You have successfully disapproved ISC " . $ISCID;
-            $this->view('isc/confirmation', ["confirmation" => $confirmation]);
+            $confirmation = "You have successfully disapproved ISC " . $ISCID . "!";
+            //$this->view('isc/confirmation', ["confirmation" => $confirmation]);
+        } else {
+            $confirmation = "Some errors occured! Can you start again?";
         }
+        
+        echo $confirmation;
     }
     
     public function reason($ISCID) {
         $this->view("pageComponent/reason", ["ISCID" => $ISCID]);
+    }
+    
+    public function giveReason($data = []) {
+        $ISCID = $data["ISCID"];
+        $reason = $data["reason"];
+        
+        echo $ISCID . " " . $reason;
     }
 } // end SchoolDeanController
 ?>

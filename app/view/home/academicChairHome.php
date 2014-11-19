@@ -40,7 +40,7 @@
 
 <!-- Start Home Div -->
 <div id="supervisorSection">	
-<input type='button' name='osx' value='Request Information' class='osx demo' />
+<input type='button' name='requestInfo' value='Request Information' class='osx' />
 
     <form action="<?PHP echo BASE_URL . 'public/'; ?>" method="POST" id="supervisorHomeForm">
         <table name="supervisorHomeTable" class="table table-hover">
@@ -133,8 +133,8 @@
               </div>
             </div>
         </form>
+        
         <div id="result" class="bg-info">
-            
         </div>
     </div>
 </div>

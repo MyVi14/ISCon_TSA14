@@ -95,7 +95,7 @@
             <div class="form-group"> 
               <div class="col-sm-offset-2 col-sm-10">
                   <button type="submit" id="btnSendReason" class="btn btn-default">Submit</button>
-                <button class="simplemodal-close btn btn-default">Close</button> <span>(or press ESC or click the overlay)</span>
+                  <button class="simplemodal-close btn btn-default" onclick="location.reload()">Close</button> <span>(or press ESC or click the overlay)</span>
               </div>
             </div>
         </form>

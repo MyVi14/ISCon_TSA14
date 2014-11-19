@@ -1,0 +1,3 @@
+Change "app/init.php" file for configuration.
+
+Current version does not have authentication or validation. Data should be input in correct format to avoid crashing.

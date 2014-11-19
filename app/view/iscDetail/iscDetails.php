@@ -53,12 +53,12 @@
       </tr>
 
       <tr>
-        <td><input type="text" name="associateTitle" value="<?PHP if(isset($associate["title"])) echo $associate["title"] ?>"/></td>
-        <td><input type="text" name="associateSurname" value="<?PHP if(isset($associate["surname"])) echo $associate["surname"] ?>"/></td> 
-        <td><input type="text" name="associateGivenName" value="<?PHP if(isset($associate["givenName"])) echo $associate["givenName"] ?>"/></td> 
-        <td><input type="text" name="associatePosition" value="<?PHP if(isset($associate["position"])) echo $associate["position"] ?>"/></td>
-        <td><input type="text" name="associateSchool" value="<?PHP if(isset($associate["school"])) echo $associate["school"] ?>"/></td>
-        <td><input type="text" name="associateEmail" value="<?PHP if(isset($associate["email"])) echo $associate["email"] ?>"/></td>
+          <td><input type="text" name="associateTitle" value="<?PHP if(isset($associate["title"])) echo $associate["title"] ?>" placeholder="title" /></td>
+          <td><input type="text" name="associateSurname" value="<?PHP if(isset($associate["surname"])) echo $associate["surname"] ?>" placeholder="surname"/></td> 
+          <td><input type="text" name="associateGivenName" value="<?PHP if(isset($associate["givenName"])) echo $associate["givenName"] ?>" placeholder="given name" /></td> 
+          <td><input type="text" name="associatePosition" value="<?PHP if(isset($associate["position"])) echo $associate["position"] ?>" placeholder="position"/></td>
+          <td><input type="text" name="associateSchool" value="<?PHP if(isset($associate["school"])) echo $associate["school"] ?>" placeholder="school"/></td>
+          <td><input type="text" name="associateEmail" value="<?PHP if(isset($associate["email"])) echo $associate["email"] ?>" placeholder="email"/></td>
       </tr>
     </table>
     
@@ -162,9 +162,8 @@
     so that anyone who sights your academic transcript will know both your topic and
     the discipline involved. Please leave out redundant words such as "A study of".</p>
 
-    <textarea rows="4" cols="100" name="contractTitle">
-    <?PHP if(isset($ISCObj)) echo $ISCObj->getContractTitle(); ?>
-    </textarea>
+    <textarea rows="4" cols="100" name="contractTitle" placeholder="contract title">
+    <?PHP if(isset($ISCObj)) echo $ISCObj->getContractTitle(); ?></textarea>
     
     <hr />
     
@@ -231,8 +230,7 @@
      topic in context.</p>
 
     <textarea rows="5" cols="100" name="learningObjectives">
-    <?PHP if(isset($ISCObj)) echo $ISCObj->getLearningObjectives(); ?>
-    </textarea>
+    <?PHP if(isset($ISCObj)) echo $ISCObj->getLearningObjectives(); ?></textarea>
      
     <hr />
      
@@ -244,15 +242,13 @@
     </p>
 
     <textarea rows="5" cols="100" name="projectOutline">
-    <?PHP if(isset($ISCObj)) echo $ISCObj->getProjectOutline(); ?>
-    </textarea>
+    <?PHP if(isset($ISCObj)) echo $ISCObj->getProjectOutline(); ?></textarea>
     
     <hr />
     
     <h3> 12. Indicate any previous study related to the Topic </h3>
     <textarea rows="2" cols="100" name="previousStudy">
-    <?PHP if(isset($ISCObj)) echo $ISCObj->getPreviousStudy(); ?>
-    </textarea>
+    <?PHP if(isset($ISCObj)) echo $ISCObj->getPreviousStudy(); ?></textarea>
     
     <hr />
     
@@ -326,8 +322,7 @@
     <input type="checkbox" name="other" />Other <br>
     <div id="expectedActivitiesOther">
         <label>Please provide details below </label><br>
-        <textarea rows="4" cols="100" name="expectedActivities[]" placeholder="Examples - surveys, radio, drama, theatre or video production, performance, work placement">
-        </textarea>
+        <textarea rows="4" cols="100" name="expectedActivities[]" placeholder="Examples - surveys, radio, drama, theatre or video production, performance, work placement"></textarea>
     </div>
     <script>
         $(document).ready(function() {
@@ -355,7 +350,7 @@
                 echo '<tr>';
                     echo '<td><input type="text" name="readingListAuthor[]" value="'.$reading["author"].'"></td>';
                     echo '<td><input type="text" name="readingListTitle[]" value="'.$reading["title"].'"></td>';
-                    echo '<td><input type="text" name="readingListPublicationDate[]" value="'.$reading["publicationDate"].'"></td>';
+                    echo '<td><input type="text" name="readingListPublicationDate[]" value="'.$reading["publicationDate"].' placeholder="yyyy-mm-dd"></td>';
                 echo '</tr>';
             }
         }
@@ -368,7 +363,7 @@
                 readingRow = '<tr>';
                 readingRow += '<td><input type="text" name="readingListAuthor[]" value=""></td>';
                 readingRow += '<td><input type="text" name="readingListTitle[]" value=""></td>';
-                readingRow += '<td><input type="text" name="readingListPublicationDate[]" value=""></td>';
+                readingRow += '<td><input type="text" name="readingListPublicationDate[]" value="" placeholder="yyyy-mm-dd"></td>';
                 readingRow += '</tr>';        
                 
                 $("#readingList tr:last").after(readingRow);
@@ -407,7 +402,7 @@
                 echo '<td><input type="text" name="componentDescription[]" value="'.$component["description"].'"/></td>';
                 echo '<td><input type="text" name="componentWordLength[]" value="'.$component["wordLength"].'"/></td>'; 
                 echo '<td><input type="text" name="componentPercentage[]" value="'.$component["percentage"].'" /></td>';
-                echo '<td><input type="text" name="componentDueDate[]" value="'.$component["dueDate"].'" /></td>';
+                echo '<td><input type="text" name="componentDueDate[]" value="'.$component["dueDate"].'" placeholder="yyyy-mm-dd" /></td>';
                 echo '</tr>';
             }
         }
@@ -428,7 +423,7 @@
                 componentRow += '<td><input type="text" name="componentDescription[]" value="" /></td>';
                 componentRow += '<td><input type="text" name="componentWordLength[]" value="" /></td>';
                 componentRow += '<td><input type="text" name="componentPercentage[]" value="" /></td>';
-                componentRow += '<td><input type="text" name="componentDueDate[]" value="" /></td>';
+                componentRow += '<td><input type="text" name="componentDueDate[]" value="" placeholder="yyyy-mm-dd" /></td>';
                 componentRow += '</tr>';        
                 
                 $("#assessmentComponentsTable tr:last").after(componentRow);
@@ -447,8 +442,7 @@
         final grade of each contract.</p>
 
     <textarea rows="4" cols="100" name="previousExperience">
-    <?PHP if(isset($ISCObj)) echo $ISCObj->getPreviousExperience(); ?>
-    </textarea>
+    <?PHP if(isset($ISCObj)) echo $ISCObj->getPreviousExperience(); ?></textarea>
     
     <hr />
     

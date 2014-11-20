@@ -21,7 +21,7 @@ class ISCDA {
         $PDOConn = Connection::getConnection();
 
         try {
-            $status = $PDOConn->exec("update School_Dean set AdditionalComment = '".$reason."' where ISCID = '" . $ISCID . "'");
+            $status = $PDOConn->exec("update SCHOOL_DEAN set AdditionalComment = '".$reason."' where ISCID = '" . $ISCID . "'");
         } catch (Exception $ex) {
             echo $query . ' :Cannot give reason!';
             echo $ex->getMessage();
@@ -165,7 +165,7 @@ class ISCDA {
                                 );
             
             // set supervisor
-            $su = $PDOConn->query("select * from Supervisor where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
+            $su = $PDOConn->query("select * from SUPERVISOR where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
             $ISCDetail->addSupervisor($su['Title'], 
                                     $su['Surname'], 
                                     $su['GivenName'], 
@@ -174,7 +174,7 @@ class ISCDA {
                                     $su['SupervisorEmail']);
             
             // set associate supervisor
-            $as = $PDOConn->query("select * from Associate_Supervisor where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
+            $as = $PDOConn->query("select * from ASSOCIATE_SUPERVISOR where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
             $ISCDetail->addAssociateSupervisor($as['Title'], 
                                     $as['Surname'], 
                                     $as['GivenName'], 
@@ -183,7 +183,7 @@ class ISCDA {
                                     $as['AssociateEmail']);
             
             // set school dean
-            $sd = $PDOConn->query("select * from School_Dean where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
+            $sd = $PDOConn->query("select * from SCHOOL_DEAN where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
             $ISCDetail->addSchoolDean( 
                                     $sd['Surname'], 
                                     $sd['GivenName'], 
@@ -191,7 +191,7 @@ class ISCDA {
                                     $sd['SchoolDeanEmail']);
             
             // set academic chair
-            $ac = $PDOConn->query("select * from Academic_Chair where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
+            $ac = $PDOConn->query("select * from ACADEMIC_CHAIR where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
             $ISCDetail->addAcademicChair($ac['Surname'], 
                                     $ac['GivenName'], 
                                     $ac['UnitCode'], 
@@ -210,14 +210,14 @@ class ISCDA {
             }
             
             // set assessment components
-            $components = $PDOConn->query("select * from Assessment_Component where ISCID = '".$ISCID."';");
+            $components = $PDOConn->query("select * from ASSESSMENT_COMPONENT where ISCID = '".$ISCID."';");
             
             foreach ($components as $row) {
                 $ISCDetail->addAssessmentCommponent($row["Description"], $row['WordLength'], $row['Percentage'], $row['DueDate'], '');
             }
             
             // set replacement unit if applicable
-            $replacement = $PDOConn->query("select * from Assessment_Component where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
+            $replacement = $PDOConn->query("select * from ASSESSMENT_COMPONENT where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
             $ISCDetail->addReplacement($replacement["UnitCode"], $replacement["Title"], $replacement["CoreOrElective"]);
             
             // set ISC supervisor answer
@@ -327,7 +327,7 @@ class ISCDA {
         
         $components = array();
         try { 
-            $assessmentComponents = $PDOConn->query("select * from Assessment_Component where ISCID='".$ISCID."'");
+            $assessmentComponents = $PDOConn->query("select * from ASSESSMENT_COMPONENT where ISCID='".$ISCID."'");
 
             $components = $assessmentComponents->fetchAll();
         } catch(Exeption $e) {
@@ -343,7 +343,7 @@ class ISCDA {
         $PDOConn = Connection::getConnection();
         
         try {
-            $editedRecord = $PDOConn->exec("update Assessment_Component set FileUpload='".$fileName."' where ComponentID='" . $ComponentID . "'");
+            $editedRecord = $PDOConn->exec("update ASSESSMENT_COMPONENT set FileUpload='".$fileName."' where ComponentID='" . $ComponentID . "'");
         } catch (Exception $ex) {
             echo $query . ' :Cannot update assessment component file upload!';
             echo $ex->getMessage();
@@ -358,7 +358,7 @@ class ISCDA {
         $PDOConn = Connection::getConnection();
         
         try {
-            $editedRecord = $PDOConn->exec("update Assessment_Component set Mark='".$mark."', Comment='".$comment."' where ComponentID='" . $ComponentID . "'");
+            $editedRecord = $PDOConn->exec("update ASSESSMENT_COMPONENT set Mark='".$mark."', Comment='".$comment."' where ComponentID='" . $ComponentID . "'");
         } catch (Exception $ex) {
             echo $query . ' :Cannot submit result!';
             echo $ex->getMessage();

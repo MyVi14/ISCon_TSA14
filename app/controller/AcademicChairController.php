@@ -4,7 +4,7 @@ class AcademicChairController extends Controller {
     public function approve($ISCID) {
         $ISCModel = $this->model("ISC");
         
-        $status = $ISCModel->sapproveISC($ISCID, "academic chair");
+        $status = $ISCModel->approveISC($ISCID, "academic chair");
         
         if($status == 1) {
             $confirmation = "You have successfully approved ISC " . $ISCID;

@@ -11,20 +11,20 @@ as select I.ISCID, I.ApplicationType, I.ApplicationStatus, I.CreatedDate,
     ISCD.ProjectOutline, ISCD.PreviousStudy, ISCD.PreviousExperience, ISCD.ContractLevel,
     ISCD.StudyMode, ISCD.CampusLocation, ISCD.TeachingPeriod
 	from ISC as I
-	join ISC_Detail as ISCD 
+	join ISC_DETAIL as ISCD 
 		on I.ISCID = ISCD.ISCID;
 
-create view ISCExpectedActivityView 
+CREATE VIEW ISCExpectedActivityView 
 as select IEA.ActivityID, ISCID, Name, Description 
-	from Expected_Activity as EA
-	join ISC_Expected_Activity as IEA 
+	from EXPECTED_ACTIVITY as EA
+	join ISC_EXPECTED_ACTIVITY as IEA 
 		on EA.ActivityID = IEA.ActivityID;
 
 create view ISCReadingListView
-as select * from Reading_List;
+as select * from READING_LIST;
 
 create view ISCSupervisorAnswerView
-as select * from ISC_Supervisor_Answer;
+as select * from ISC_SUPERVISOR_ANSWER;
 
 
 

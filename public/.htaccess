@@ -1,6 +1,7 @@
 Options -MultiViews
 RewriteEngine On
 
+# change folder name here
 RewriteBase /ISCon/public/
 
 RewriteCond %{REQUEST_FILENAME} !-d

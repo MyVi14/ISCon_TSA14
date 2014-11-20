@@ -1,5 +1,7 @@
+drop database if exists ISCON;
+
 /* Create a new database or schema */
-CREATE DATABASE `ISCON` /*!40100 DEFAULT CHARACTER SET latin1 */;
+CREATE DATABASE `ISCON` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
 USE ISCON;
 
@@ -227,16 +229,16 @@ CREATE TABLE ISC_SUPERVISOR
 
 CREATE TABLE ISC_SUPERVISOR_ANSWER
 (
-	ISCID				int			not null,
+	ISCID				INT					not null,
 	ItemID				varchar(10)			not null,
 	YesNoAnswer			varchar(10),
 	TextAnswer			varchar(1000),
 	Commment			varchar(1000),
-	CONSTRAINT 	ISCSupervisorPK		primary key (ISCID, ItemID),
-	CONSTRAINT 	ISCSupervisorAnswerFK		foreign key (ItemID)
-						references ISC_Supervisor(ItemID),
+	CONSTRAINT ISCSupervisorAnswerPK primary key (ISCID, ItemID),
 	CONSTRAINT 	ISCSupervisorAnswerFK2		foreign key (ISCID)
-								references ISC(ISCID)
+						references ISC(ISCID),
+	CONSTRAINT 	ISCSupervisorAnswerFK		foreign key (ItemID)
+						references ISC_SUPERVISOR(ItemID)
 );
 
 #Create a new table for team member information. This table is used to test

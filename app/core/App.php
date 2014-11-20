@@ -10,7 +10,7 @@
 */
 class App{
         // controller name that will be initialized and called
-    protected $controller = 'home';
+    protected $controller = 'Home';
         // method of the controller that will be called
     protected $method = 'index';
         // parameters can that can passed to the method

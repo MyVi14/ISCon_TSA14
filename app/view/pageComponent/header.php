@@ -87,11 +87,11 @@
     <header class="hidden-xs"><div id="header" class="hidden-xs">
     <div id="global-bar">
     <div id="header-nav"><ul>
-    <li><a href="<?PHP echo $urlPrefix . 'public/home/index'; ?>">Home</a></li>
-    <li><a href="<?PHP echo $urlPrefix . 'public/home/student'; ?>">Student</a></li>
-    <li><a href="<?PHP echo $urlPrefix . 'public/home/supervisor'; ?>">Supervisor</a></li>
-    <li><a href="<?PHP echo $urlPrefix . 'public/home/academicChair'; ?>">Academic Chair</a></li>
-    <li><a href="<?PHP echo $urlPrefix . 'public/home/schoolDean'; ?>">School Dean</a></li>
+    <li><a href="<?PHP echo $urlPrefix . 'public/Home/index'; ?>">Home</a></li>
+    <li><a href="<?PHP echo $urlPrefix . 'public/Home/student'; ?>">Student</a></li>
+    <li><a href="<?PHP echo $urlPrefix . 'public/Home/supervisor'; ?>">Supervisor</a></li>
+    <li><a href="<?PHP echo $urlPrefix . 'public/Home/academicChair'; ?>">Academic Chair</a></li>
+    <li><a href="<?PHP echo $urlPrefix . 'public/Home/schoolDean'; ?>">School Dean</a></li>
     <li><a href="<?PHP echo $urlPrefix . 'public/Team/getTeamMemberList'; ?>">Team Member</a></li>
     </ul></div>
     <div id="header-search"><form enctype="application/x-www-form-urlencoded" method="get" action="http://search.murdoch.edu.au">

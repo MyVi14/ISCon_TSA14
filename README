@@ -1,3 +1,6 @@
 Change "app/init.php" file for configuration.
+Remember to change path name in “.htaccess” in public folder
 
 Current version does not have authentication or validation. Data should be input in correct format to avoid crashing.
+
+This project makes use of “Rewrite Rules” in apache server. So make sure that rewrite module is enabled, “AllowOverride All” is set for the project folder

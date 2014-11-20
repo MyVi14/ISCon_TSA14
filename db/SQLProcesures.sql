@@ -20,18 +20,18 @@ CREATE PROCEDURE CreateNewISC (
 BEGIN
 	Declare varNewID int;
 	
-	INSERT INTO `iscon`.`isc` (`ApplicationType`, `ApplicationStatus`, `CreatedDate`, `Surname`, `GivenName`, `StudentNo`, `Email`, `PhoneNo`, `ConfirmMaximumISC`, `EnrollInPHD`) 
+	INSERT INTO `ISCON`.`ISC` (`ApplicationType`, `ApplicationStatus`, `CreatedDate`, `Surname`, `GivenName`, `StudentNo`, `Email`, `PhoneNo`, `ConfirmMaximumISC`, `EnrollInPHD`) 
 			VALUES (newApplicationType, newApplicationStatus, CURDATE(), newSurname, newGivenName, newStudentNo, newEmail, newPhoneNo, newConfirmMaximumISC, newEnrollInPHD);
 
 	#Get the customerID surrogate key value
 	SET varNewID = last_insert_id();
 	SET ISCID = varNewID;
 
-	INSERT INTO `iscon`.`ISC_Detail` (`ISCID`) values (varNewID);
-	INSERT INTO `iscon`.`Supervisor` (`ISCID`) values (varNewID);
-	INSERT INTO `iscon`.`Associate_Supervisor` (`ISCID`) values (varNewID);
-	INSERT INTO `iscon`.`School_Dean` (`ISCID`) values (varNewID);
-	INSERT INTO `iscon`.`Academic_Chair` (`ISCID`) values (varNewID);
+	INSERT INTO `ISCON`.`ISC_DETAIL` (`ISCID`) values (varNewID);
+	INSERT INTO `ISCON`.`SUPERVISOR` (`ISCID`) values (varNewID);
+	INSERT INTO `ISCON`.`ASSOCIATE_SUPERVISOR` (`ISCID`) values (varNewID);
+	INSERT INTO `ISCON`.`SCHOOL_DEAN` (`ISCID`) values (varNewID);
+	INSERT INTO `ISCON`.`ACADEMIC_CHAIR` (`ISCID`) values (varNewID);
 END
 //
 
@@ -181,7 +181,7 @@ Delimiter //
 
 CREATE PROCEDURE DeleteOldISCExpectedActivity ( IN 	ISCID	int )
 BEGIN
-	delete from ISC_expected_activity where ISC_expected_activity.ISCID = ISCID;
+	delete from ISC_EXPECTED_ACTIVITY where ISC_EXPECTED_ACTIVITY.ISCID = ISCID;
 
 END
 //
@@ -204,7 +204,7 @@ label:BEGIN
 	set varActivityID = -1;
 		
 	select ActivityID into varActivityID
-	from Expected_Activity as EA
+	from EXPECTED_ACTIVITY as EA
 	where EA.Name = Name
 	and   EA.Description = Description;
 
@@ -212,12 +212,12 @@ label:BEGIN
 	if (varActivityID != -1) then
 		# check if a record in ISC_Expected_Activity already exists
 		select count(*) into varCount
-		from ISC_Expected_Activity as IEA
+		from ISC_EXPECTED_ACTIVITY as IEA
 		where IEA.ISCID = ISCID and IEA.ActivityID = varActivityID;
 		
 		# if the recored does not exist
 		if(	varCount = 0) then
-			INSERT INTO `iscon`.`ISC_Expected_Activity` (`ActivityID`, `ISCID`)
+			INSERT INTO `ISCON`.`ISC_EXPECTED_ACTIVITY` (`ActivityID`, `ISCID`)
 					VALUES (varActivityID, ISCID);
 		end if;
 
@@ -225,7 +225,7 @@ label:BEGIN
 	end if;
 	
 	# if not exist
-	INSERT INTO `iscon`.`Expected_Activity` (`Name`, `Description`)
+	INSERT INTO `ISCON`.`EXPECTED_ACTIVITY` (`Name`, `Description`)
 			VALUES (Name, Description);
 
 	set varNewActivityID = last_insert_id();
@@ -235,7 +235,7 @@ label:BEGIN
 	where IEA.ISCID = ISCID and IEA.ActivityID = varNewActivityID;
 
 	if(	varCount = 0) then
-		INSERT INTO `iscon`.`ISC_Expected_Activity` (`ActivityID`, `ISCID`)
+		INSERT INTO `ISCON`.`ISC_EXPECTED_ACTIVITY` (`ActivityID`, `ISCID`)
 				VALUES (varNewActivityID, ISCID);
 	end if;
 
@@ -250,7 +250,7 @@ Delimiter //
 
 CREATE PROCEDURE DeleteOldISCReadingList ( IN 	ISCID	int )
 BEGIN
-	delete from Reading_List where Reading_List.ISCID = ISCID;
+	delete from READING_LIST where READING_LIST.ISCID = ISCID;
 
 END
 //
@@ -267,7 +267,7 @@ CREATE PROCEDURE UpdateISCReadingList (
 								IN PublicationDate     DATE
 								)
 label:BEGIN
-		INSERT INTO `iscon`.`Reading_List` (`Author`, `Title`, `PublicationDate`, `ISCID`)
+		INSERT INTO `ISCON`.`READING_LIST` (`Author`, `Title`, `PublicationDate`, `ISCID`)
 			VALUES (Author, Title, PublicationDate, ISCID);
 
 END label
@@ -280,7 +280,7 @@ Delimiter //
 
 CREATE PROCEDURE DeleteOldISCReplacement ( IN 	ISCID	int )
 BEGIN
-	delete from Replacement where Replacement.ISCID = ISCID;
+	delete from REPLACEMENT where REPLACEMENT.ISCID = ISCID;
 
 END
 //
@@ -297,7 +297,7 @@ CREATE PROCEDURE UpdateISCReplacement (
 								IN CoreOrElective  VARCHAR(10)
 								)
 label:BEGIN
-		INSERT INTO `iscon`.`Replacement` (`ISCID`, `UnitCode`, `Title`, `CoreOrElective`)
+		INSERT INTO `ISCON`.`REPLACEMENT` (`ISCID`, `UnitCode`, `Title`, `CoreOrElective`)
 			VALUES (ISCID, UnitCode, Title, CoreOrElective);
 
 END label
@@ -310,7 +310,7 @@ Delimiter //
 
 CREATE PROCEDURE DeleteOldISCAssessmentComponent ( IN 	ISCID	int )
 BEGIN
-	delete from Assessment_Component where Assessment_Component.ISCID = ISCID;
+	delete from ASSESSMENT_COMPONENT where ASSESSMENT_COMPONENT.ISCID = ISCID;
 
 END
 //
@@ -328,7 +328,7 @@ CREATE PROCEDURE UpdateISCAssessmentComponent (
 								IN DueDate				DATE
 								)
 label:BEGIN
-		INSERT INTO `iscon`.`Assessment_Component` (`ISCID`, `Description`, `WordLength`, `Percentage`, `DueDate`)
+		INSERT INTO `ISCON`.`ASSESSMENT_COMPONENT` (`ISCID`, `Description`, `WordLength`, `Percentage`, `DueDate`)
 			VALUES (ISCID, Description, WordLength, Percentage, DueDate);
 
 END label
@@ -355,7 +355,7 @@ CREATE PROCEDURE UpdateISCDetails (
 								TeachingPeriod      VARCHAR(30)
 								)
 label:BEGIN
-	UPDATE `iscon`.`ISC_DETAIL` as I
+	UPDATE `ISCON`.`ISC_DETAIL` as I
 	SET I.CourseName =  CourseName,
 		I.CreditPoint =  CreditPoint, 
 		I.ContractTitle =  ContractTitle, 
@@ -388,7 +388,7 @@ CREATE PROCEDURE AddISCSupervisorAnswer (
 									IN Commment			varchar(1000)
 									)
 label:BEGIN
-	INSERT INTO `iscon`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Commment`)
+	INSERT INTO `ISCON`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Commment`)
 		VALUES(ISCID, ItemID, YesNoAnswer, TextAnswer, Commment);
 END label
 //

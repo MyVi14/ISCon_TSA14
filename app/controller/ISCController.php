@@ -44,6 +44,8 @@ class ISCController extends Controller {
             $editedRecord = $ISCModel->saveAssessmentComponentFileUpload($componentID, $fileName);
             
             header("Location: " . $_SERVER['HTTP_REFERER']);
+        } else {
+            echo 'Cannot upload file. Start again';
         }
     }
     

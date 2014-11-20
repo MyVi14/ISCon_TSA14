@@ -13,11 +13,14 @@
     $iscController = new ISCController;
     $ISCObj = $iscController->getISC($ISCID);
     
+    echo "<h2> ISCID: $ISCID </h2>";
+    echo '<form role="form" class="form-horizontal" >';
     include_once dirname(__FILE__). '/../iscDetail/personalDetails.php';
     include_once dirname(__FILE__). '/../iscDetail/iscDetails.php';
     
     if($who != 'student')
         include_once dirname(__FILE__). '/../iscDetail/supervisorAnswer.php';
+    echo '</form>';
 ?>
 
 <a href="#" class="back-to-top">Back to Top</a>

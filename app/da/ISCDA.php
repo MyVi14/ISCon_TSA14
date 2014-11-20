@@ -103,7 +103,7 @@ class ISCDA {
         $PDOConn = Connection::getConnection();
         
         try {
-            $query = "call AddISCSupervisorAnswer(:ISCID, :ItemID, :YesNoAnswer, :TextAnswer, :Commment)";
+            $query = "call AddISCSupervisorAnswer(:ISCID, :ItemID, :YesNoAnswer, :TextAnswer, :Comment)";
             $results = $PDOConn->prepare($query);
             $results->bindParam(':ISCID', $ISCID);
             
@@ -112,7 +112,7 @@ class ISCDA {
                 $results->bindParam(':ItemID', $answer["itemID"]);
                 $results->bindParam(':YesNoAnswer', $answer["yesNoAnswer"]);
                 $results->bindParam(':TextAnswer', $answer["textAnswer"]);
-                $results->bindParam(':Commment', $answer["comment"]);
+                $results->bindParam(':Comment', $answer["comment"]);
 
                 $status= $results->execute();
             }

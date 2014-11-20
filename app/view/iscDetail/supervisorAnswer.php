@@ -45,6 +45,7 @@
         <td>If so, are they available?</td>
         <td>YES</td>
         <td><input type="radio" name="item1Comment" value="yes" <?PHP if(isset($item1) && ($item1["comment"] == 'yes')) echo 'checked="checked"'; ?> ></td>
+    <h1><?PHP echo $item["comment"]; ?> </h1>
         <td>NO</td>
         <td><input type="radio" name="item1Comment" value="no" <?PHP if(isset($item1) && ($item1["comment"] == 'no')) echo 'checked="checked"'; ?> ></td>
     </tr>
@@ -62,8 +63,7 @@
         <td>3.</td>
         <td><label>Does the contract involve overseas travel?</label>
             <p>If so, please indicate the cost and how this will be met:
-                <textarea rows="3" cols="50" name="">
-                </textarea>
+                <textarea rows="3" cols="50" name="item3Comment"><?PHP if(isset($item3) && isset($item3["comment"])) echo $item3["comment"]; ?></textarea>
             </p>
         </td>
         <td>YES</td>
@@ -156,9 +156,7 @@
     
     <tr>
         <td colspan="6">
-            <textarea rows="3" cols="100" name="item6">
-            <?PHP if( isset($item6) ) echo $item6["textAnswer"]; ?>
-            </textarea>
+            <textarea rows="3" cols="100" name="item6"><?PHP if( isset($item6) ) echo $item6["textAnswer"]; ?></textarea>
         </td>
     </tr>
 
@@ -170,9 +168,7 @@
 
     <tr>
         <td colspan="6">
-            <textarea rows="3" cols="100" name="item7"> 
-            <?PHP if( isset($item7) ) echo $item7["textAnswer"]; ?>
-            </textarea> 
+            <textarea rows="3" cols="100" name="item7"><?PHP if( isset($item7) ) echo $item7["textAnswer"]; ?></textarea> 
         </td>
     </tr>
 
@@ -197,7 +193,7 @@
 
 </table>
 
-<label>Please ensure that that Academic Chair has completed and signed Section 9, if applicable. </label>
+<label>Please ensure that that Academic Chair has agreed to this ISC, if applicable. </label>
 
 </div>
 <!-- ISC Form - End Section B -->

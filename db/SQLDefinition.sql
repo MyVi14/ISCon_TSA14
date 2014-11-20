@@ -233,8 +233,8 @@ CREATE TABLE ISC_SUPERVISOR_ANSWER
 	ItemID				varchar(10)			not null,
 	YesNoAnswer			varchar(10),
 	TextAnswer			varchar(1000),
-	Commment			varchar(1000),
-	CONSTRAINT ISCSupervisorAnswerPK primary key (ISCID, ItemID),
+	Comment			varchar(1000),
+	CONSTRAINT 	ISCSupervisorAnswerPK primary key (ISCID, ItemID),
 	CONSTRAINT 	ISCSupervisorAnswerFK2		foreign key (ISCID)
 						references ISC(ISCID),
 	CONSTRAINT 	ISCSupervisorAnswerFK		foreign key (ItemID)

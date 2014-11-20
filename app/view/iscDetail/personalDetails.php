@@ -5,28 +5,38 @@
     <h1 class="bg-warning"> Section A - Personal Details</h1>
 
     <div class="form-group">
-        <label>Student Number</label>
-        <input name="studentNo" type="text" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getStudentNo(); ?>">
+        <label class="control-label col-sm-2">Student Number</label>
+        <div class="col-sm-10">
+            <input name="studentNo" type="text" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getStudentNo(); ?>">
+        </div>
     </div>
     
     <div class="form-group">
-        <label>Surname</label>
-        <input name="studentSurname" type="text" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getSurname(); ?>">
+        <label class="control-label col-sm-2">Surname</label>
+        <div class="col-sm-10">
+            <input name="studentSurname" type="text" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getSurname(); ?>">
+        </div>
     </div>
     
     <div class="form-group">
-        <label>Given Name</label>
-        <input name="studentGivenName" type="text" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getGivenName(); ?>">
+        <label class="control-label col-sm-2">Given Name</label>
+        <div class="col-sm-10">
+            <input name="studentGivenName" type="text" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getGivenName(); ?>">
+        </div>
     </div>
     
     <div class="form-group">
-        <label>Phone No</label>
-        <input name="studentPhoneNo" type="tel" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getEmail(); ?>" />
+        <label class="control-label col-sm-2">Phone No</label>
+        <div class="col-sm-10">
+            <input name="studentPhoneNo" type="tel" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getEmail(); ?>" />
+        </div>
     </div>
     
     <div class="form-group">
-        <label>Email</label>
-        <input name="studentEmail" type="email" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getPhoneNo(); ?>" />
+        <label class="control-label col-sm-2">Email</label>
+        <div class="col-sm-10">
+            <input name="studentEmail" type="email" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getPhoneNo(); ?>" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" title="Email address" />
+        </div>
     </div>
 
     <br />

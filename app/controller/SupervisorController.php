@@ -43,6 +43,7 @@ class SupervisorController extends Controller {
         $item1Comment = $answer["item1Comment"];
         $item2Answer = $answer["item2"];
         $item3Answer = $answer["item3"];
+        $item3Comment = $answer["item3Comment"];
         $item4Answer = $answer["item4"];
         $item5aAnswer = $answer["item5a"];
         $item5bAnswer = $answer["item5b"];
@@ -56,7 +57,7 @@ class SupervisorController extends Controller {
         
         $ISCModel->addSupervisorAnswer("item1", $item1Answer, "", $item1Comment);
         $ISCModel->addSupervisorAnswer("item2", $item2Answer, "", "");
-        $ISCModel->addSupervisorAnswer("item3", $item3Answer, "", "");
+        $ISCModel->addSupervisorAnswer("item3", $item3Answer, "", $item3Comment);
         $ISCModel->addSupervisorAnswer("item4", $item4Answer, "", "");
         $ISCModel->addSupervisorAnswer("item5a", $item5aAnswer, "", "");
         $ISCModel->addSupervisorAnswer("item5b", $item5bAnswer, "", "");

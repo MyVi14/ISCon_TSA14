@@ -217,7 +217,7 @@ class ISCDA {
             }
             
             // set replacement unit if applicable
-            $replacement = $PDOConn->query("select * from ASSESSMENT_COMPONENT where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
+            $replacement = $PDOConn->query("select * from REPLACEMENT where ISCID = '".$ISCID."';")->fetch(PDO::FETCH_ASSOC);
             $ISCDetail->addReplacement($replacement["UnitCode"], $replacement["Title"], $replacement["CoreOrElective"]);
             
             // set ISC supervisor answer

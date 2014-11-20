@@ -350,7 +350,7 @@
                 echo '<tr>';
                     echo '<td><input type="text" name="readingListAuthor[]" value="'.$reading["author"].'"></td>';
                     echo '<td><input type="text" name="readingListTitle[]" value="'.$reading["title"].'"></td>';
-                    echo '<td><input type="text" name="readingListPublicationDate[]" value="'.$reading["publicationDate"].' placeholder="yyyy-mm-dd"></td>';
+                    echo '<td><input type="text" name="readingListPublicationDate[]" value="'.$reading["publicationDate"].'" placeholder="yyyy-mm-dd"></td>';
                 echo '</tr>';
             }
         }

@@ -28,14 +28,14 @@
     <div class="form-group">
         <label class="control-label col-sm-2">Phone No</label>
         <div class="col-sm-10">
-            <input name="studentPhoneNo" type="tel" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getEmail(); ?>" />
+            <input name="studentPhoneNo" type="tel" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getPhoneNo(); ?>" />
         </div>
     </div>
     
     <div class="form-group">
         <label class="control-label col-sm-2">Email</label>
         <div class="col-sm-10">
-            <input name="studentEmail" type="email" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getPhoneNo(); ?>" pattern="^\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,8}$" title="Email address" />
+            <input name="studentEmail" type="email" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getEmail(); ?>" pattern="^\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,8}$" title="Email address" />
         </div>
     </div>
 

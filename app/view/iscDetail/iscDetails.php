@@ -162,8 +162,7 @@
     so that anyone who sights your academic transcript will know both your topic and
     the discipline involved. Please leave out redundant words such as "A study of".</p>
 
-    <textarea rows="4" cols="100" name="contractTitle" placeholder="contract title">
-    <?PHP if(isset($ISCObj)) echo $ISCObj->getContractTitle(); ?> ></textarea>
+    <textarea rows="4" cols="100" name="contractTitle" placeholder="contract title"><?PHP if(isset($ISCObj)) echo $ISCObj->getContractTitle(); ?></textarea>
     
     <hr />
     

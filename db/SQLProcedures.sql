@@ -385,11 +385,11 @@ CREATE PROCEDURE AddISCSupervisorAnswer (
 									IN ItemID			varchar(10),
 									IN YesNoAnswer		varchar(10),
 									IN TextAnswer		varchar(1000),
-									IN Commment			varchar(1000)
+									IN Comment			varchar(1000)
 									)
 label:BEGIN
-	INSERT INTO `ISCON`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Commment`)
-		VALUES(ISCID, ItemID, YesNoAnswer, TextAnswer, Commment);
+	INSERT INTO `ISCON`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Comment`)
+		VALUES(ISCID, ItemID, YesNoAnswer, TextAnswer, Comment);
 END label
 //
 

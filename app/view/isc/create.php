@@ -72,7 +72,7 @@ if ( $data == null ) {
     
     if ($status == 1) {
         echo '<h3> You have successfully submitted one ISC</h3>';
-        echo '<h3>Thank your for your cooperation!</h3>';
+        echo '<h3>Thank your for your participation!</h3>';
     } else {
         echo 'Some error. You can start again';
     }

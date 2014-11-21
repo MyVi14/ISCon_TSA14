@@ -32,7 +32,7 @@
           <td><input type="text" name="supervisorGivenName" value="<?PHP if(isset($supervisor["givenName"])) echo $supervisor["givenName"] ?>" placeholder="given name"/></td> 
           <td><input type="text" name="supervisorPosition" value="<?PHP if(isset($supervisor["position"])) echo $supervisor["position"] ?>" placeholder="position"/></td>
           <td><input type="text" name="supervisorSchool" value="<?PHP if(isset($supervisor["school"])) echo $supervisor["school"] ?>" placeholder="school"/></td>
-          <td><input type="email" name="supervisorEmail" value="<?PHP if(isset($supervisor["email"])) echo $supervisor["email"] ?>" placeholder="email address" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" title="Email address" /></td>
+          <td><input type="email" name="supervisorEmail" value="<?PHP if(isset($supervisor["email"])) echo $supervisor["email"] ?>" placeholder="email address" pattern="^\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,8}$" title="Email address" /></td>
       </tr>
     </table>
     
@@ -58,7 +58,7 @@
           <td><input type="text" name="associateGivenName" value="<?PHP if(isset($associate["givenName"])) echo $associate["givenName"] ?>" placeholder="given name" /></td> 
           <td><input type="text" name="associatePosition" value="<?PHP if(isset($associate["position"])) echo $associate["position"] ?>" placeholder="position"/></td>
           <td><input type="text" name="associateSchool" value="<?PHP if(isset($associate["school"])) echo $associate["school"] ?>" placeholder="school"/></td>
-          <td><input type="text" name="associateEmail" value="<?PHP if(isset($associate["email"])) echo $associate["email"] ?>" placeholder="email address" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" title="Email address"/></td>
+          <td><input type="text" name="associateEmail" value="<?PHP if(isset($associate["email"])) echo $associate["email"] ?>" placeholder="email address" pattern="^\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,8}$" title="Email address"/></td>
       </tr>
     </table>
     
@@ -202,7 +202,7 @@
           <td><input type="text" name="academicChairSurname" value="<?PHP if(isset($academicChair["surname"])) echo $academicChair["surname"] ?>"></td>
           <td><input type="text" name="academicChairGivenName" value="<?PHP if(isset($academicChair["givenName"])) echo $academicChair["givenName"] ?>"></td>
           <td><input type="text" name="academicChairUnitCode" value="<?PHP if(isset($academicChair["unitCode"])) echo $academicChair["unitCode"] ?>"></td>
-          <td><input type="email" name="academicChairEmail" value="<?PHP if(isset($academicChair["email"])) echo $academicChair["email"] ?>" placeholder="email address" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" title="Email address"></td>
+          <td><input type="email" name="academicChairEmail" value="<?PHP if(isset($academicChair["email"])) echo $academicChair["email"] ?>" placeholder="email address" pattern="^\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,8}$" title="Email address"></td>
       </tr>
     </table>
     </div>
@@ -456,7 +456,7 @@
           <td><input type="text" name="schoolDeanGivenName" value="<?PHP if(isset($schoolDean["givenName"])) echo $schoolDean["givenName"] ?>"></td>
           <td><input type="text" name="schoolDeanSchool" value="<?PHP if(isset($schoolDean["school"])) echo $schoolDean["school"] ?>"></td>
           <td><input type="email" name="schoolDeanEmail" value="<?PHP if(isset($schoolDean["email"])) echo $schoolDean["email"] ?>" 
-                     pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" title="Email address" ></td>
+                     pattern="^\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,8}$" title="Email address" ></td>
       </tr>
     </table>
     

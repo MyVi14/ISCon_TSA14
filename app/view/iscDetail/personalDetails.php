@@ -35,7 +35,7 @@
     <div class="form-group">
         <label class="control-label col-sm-2">Email</label>
         <div class="col-sm-10">
-            <input name="studentEmail" type="email" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getPhoneNo(); ?>" pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/" title="Email address" />
+            <input name="studentEmail" type="email" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getPhoneNo(); ?>" pattern="^\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,8}$" title="Email address" />
         </div>
     </div>
 

@@ -268,11 +268,12 @@ class ISCDA {
         $query = "call UpdateISCDetails(:ISCID, :CourseName, :CreditPoint, :ContractTitle, "
                 . ":IsAReplacement, :LearningObjectives, :ProjectOutline, :PreviousStudy, :PreviousExperience, "
                 . ":ContractLevel, :StudyMode, :CampusLocation, :TeachingPeriod);";
+        
         try {
             $results = $PDOConn->prepare($query);
             $results->bindParam(':ISCID', $ISCDetail->getISCID());
             $results->bindParam(':CourseName', $ISCDetail->getCourseName());
-            $results->bindParam(':CreditPoint', $ISCDetail->getCreditPoint());
+            $results->bindParam(':CreditPoint', strlen($ISCDetail->getCreditPoint()) == 0 ? 0 : $ISCDetail->getCreditPoint());
             $results->bindParam(':ContractTitle', $ISCDetail->getContractTitle());
             $results->bindParam(':IsAReplacement', $ISCDetail->getIsAReplacement());
             $results->bindParam(':LearningObjectives', $ISCDetail->getLearningObjectives());

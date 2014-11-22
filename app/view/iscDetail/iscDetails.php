@@ -383,6 +383,7 @@
     </p>
     <table id="assessmentComponentsTable" class="table">
      <tr>
+        <th>Number</th>
         <th>Description</th>
         <th>Word Length</th>
         <th>Percentage</th>
@@ -413,6 +414,7 @@
         $(document).ready(function() {
             $('[name="addAssessmentComponent"]').click(function(e){
                 componentRow = '<tr>';
+                componentRow += '<td><input type="number" name="number[]" value="" /></td>';
                 componentRow += '<td><input type="text" name="componentDescription[]" value="" /></td>';
                 componentRow += '<td><input type="number" name="componentWordLength[]" min="0" value="" /></td>';
                 componentRow += '<td><input type="number" name="componentPercentage[]" min="0" value="" /></td>';
@@ -434,8 +436,7 @@
     <p>If this includes previous ISCs, please list the title, credit point value, supervisor and 
         final grade of each contract.</p>
 
-    <textarea rows="4" cols="100" name="previousExperience">
-    <?PHP if(isset($ISCObj)) echo $ISCObj->getPreviousExperience(); ?></textarea>
+    <textarea rows="4" cols="100" name="previousExperience"><?PHP if(isset($ISCObj)) echo $ISCObj->getPreviousExperience(); ?></textarea>
     
     <hr />
     

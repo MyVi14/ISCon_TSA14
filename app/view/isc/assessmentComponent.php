@@ -1,10 +1,14 @@
 <?PHP
     $title = "ISC Assessment Component Page";
-    include($headerLink);
+    
     $ISCID = $data["ISCID"];
     $components = $data["components"];
     $who = $data["who"];
-    
+    if ($who == 'student') {
+        include($studentHeader);
+    } else if ($who == 'supervisor') {
+        include($supervisorHeader);
+    }
 ?>
 
 <script>
@@ -81,9 +85,8 @@
                 </textarea>
             </td>
             <td>
-                <?PHP if($component["FileUpload"] == null) { ?>
-                    <button name="submitComponent"> Submit component</button>
-                    
+                <?PHP if($component["FileUpload"] == null && $who == 'student') { ?>
+                    <button name="submitComponent"> Submit component</button>    
                     <br />
                     <button name="btnSubmitComponent" data-componentid="<?PHP echo $component['ComponentID']; ?>" > Submit </button>
                 <?PHP } else {

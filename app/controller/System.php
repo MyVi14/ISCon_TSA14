@@ -75,7 +75,7 @@ class System {
 //        $status = $this->upload('', $fileName, "emailAttachment");
         
         if ($from != '' && $to != '' && $body != '') {
-            $this->sendEmail($from, $fromName, $subject, $body, $to, $toName);
+            echo $this->sendEmail($from, $fromName, $subject, $body, $to, $toName);
         }
     }
     
@@ -116,11 +116,13 @@ class System {
         $mail->Body    = $body;
 
         if(!$mail->send()) {
-            echo 'Message could not be sent.';
-            echo 'Mailer Error: ' . $mail->ErrorInfo;
+            $message = 'Message could not be sent.';
+            $message = 'Mailer Error: ' . $mail->ErrorInfo;
         } else {
-            echo 'Message has been sent';
+            $message = 'Message has been sent';
         }
+        
+        return $message;
     } // end sendEmail()
     
     public function convertResultToExcel() {

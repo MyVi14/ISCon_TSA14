@@ -40,7 +40,6 @@
 <!-- OSX Style CSS files -->
 <link type='text/css' href='<?PHP echo BASE_URL . "public/css/osx.css" ?>' rel='stylesheet' media='screen' />
 <style>
-       
         .back-to-top {
             position: fixed;
             bottom: 2em;
@@ -92,7 +91,7 @@
     <li><a href="<?PHP echo $urlPrefix . 'public/Home/supervisor'; ?>">Supervisor</a></li>
     <li><a href="<?PHP echo $urlPrefix . 'public/Home/academicChair'; ?>">Academic Chair</a></li>
     <li><a href="<?PHP echo $urlPrefix . 'public/Home/schoolDean'; ?>">School Dean</a></li>
-    <li><a href="<?PHP echo $urlPrefix . 'public/Team/getTeamMemberList'; ?>">Team Member</a></li>
+<!--    <li><a href="<?PHP echo $urlPrefix . 'public/Team/getTeamMemberList'; ?>">Team Member</a></li>-->
     </ul></div>
     <div id="header-search"><form enctype="application/x-www-form-urlencoded" method="get" action="http://search.murdoch.edu.au">
     <label for="q">Enter search term</label><input type="text" value="" autocomplete="off" title="enter search term" id="q" name="q"><input type="submit" value="Search" class="btn btn-default btn-xs"><input type="hidden" value="internal" name="searchSite">

@@ -31,9 +31,27 @@ class SupervisorController extends Controller {
         
         $confirmation = "You have successfully approved ISC " . $ISCID;
         
-        if($status == 1)
+        if($status == 1) {
+            // send email
+            $ISCDetail = $this->model("ISCDetail");
+            
+            $ISCDetail = $ISCDetail::getISC($ISCID);
+            
+            require_once 'System.php';
+            $sys = new System();
+            
+            // email to school dean
+            $sys->email(array(
+                "fromEmail" => "tieuhaphong91@gmail.com",
+                "fromName" => "Independent Study Portal",
+                "toEmail" => $ISCDetail->getSchoolDean()["email"],
+                "toName" => $ISCDetail->getSchoolDean()["surname"] . " " . $ISCDetail->getSchoolDean()["givenName"],
+                "subject" => "Independent Study Contract Portal: An ISC needs your attention!",
+                "body" => "Supervisor has recently approved an ISC that needs your supervision. Please click here to review:\n" . URL_PREFIX . "public/ISCController/get/".$ISCID."/schoolDean"
+            ));
+            
             $this->view('isc/confirmation', ["confirmation" => $confirmation]);
-        else 
+        } else 
             $this->view('isc/confirmation', ["confirmation" => "Some error happend, try again"]);
     }
     

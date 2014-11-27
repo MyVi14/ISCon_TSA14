@@ -76,6 +76,9 @@ class ISC {
         return ISCDA::updateSupervisorAnswers($ISC->getISCID(), $ISC->getSupervisorAnswer());
     }
     
+    public static function refDecisionType() {
+    }
+    
     public function addSupervisorAnswer($itemID, $yesNoAnswer, $textAnswer, $comment) {
         $supervisorAnswer = array("itemID" => $itemID,
                                 "yesNoAnswer" => $yesNoAnswer,

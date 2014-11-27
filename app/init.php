@@ -20,6 +20,7 @@ $urlPrefix .= $root;
 // change below values for root folder
 define("BASE_URL", $root);
 define("ROOT_PATH", $rootFolderName);
+define("URL_PREFIX", $urlPrefix);
 
 // change below values for database
 define("DB_HOST", "127.0.0.1");

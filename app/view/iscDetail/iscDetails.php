@@ -149,7 +149,7 @@
     ISCs can have a value of 2 or 3 points. <br />
     
     <label>What is the credit point value of this ISC?
-        <input type="text" size="2" maxlength="2" name="creditPoint" placeholder="0" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getCreditPoint(); ?>"/>
+        <input type="text" size="2" maxlength="2" name="creditPoint" placeholder="0" max="3" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getCreditPoint(); ?>"/>
      points
     </label> 
     
@@ -207,7 +207,12 @@
     </div>
     <script>
         $(document).ready(function() {
-            $("#replacement").hide();
+            if ($("[name='isAReplacement']").attr("value") == "yes") {
+                $("#replacement").show();
+            } else {
+                $("#replacement").hide();
+            }
+            
             $('[name="isAReplacement"]').click(function(e){
                 if ($(this).attr("value") == "yes") {
                     $("#replacement").show();
@@ -394,7 +399,7 @@
             $count = 0;
             foreach( $ISCObj->getAssessmentComponents() as $component ) {
                 echo '<tr>';
-                echo '<td><input type="text" name="number[]" value="'. ++$count .'"/></td>';
+                echo '<td><input type="text" name="number[]" size="5" value="'. ++$count .'"/></td>';
                 echo '<td><input type="text" name="componentDescription[]" value="'.$component["description"].'"/></td>';
                 echo '<td><input type="number" name="componentWordLength[]" min="0" value="'.$component["wordLength"].'"/></td>'; 
                 echo '<td><input type="number" name="componentPercentage[]" min="0" value="'.$component["percentage"].'" /></td>';

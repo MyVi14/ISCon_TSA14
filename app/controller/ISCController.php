@@ -182,6 +182,46 @@ class ISCController extends Controller {
         
         $status = $ISCDetail->updateISCDetail($ISCDetail);
         
+        // send email
+        if (isset($ISC["applicationStatus"]) && strtolower( $ISC["applicationStatus"] ) == "processing" ) {
+            require_once 'System.php';
+            $sys = new System();
+            
+            // if this ISC is a replacement module
+            if ( $ISCDetail->getIsAReplacement() == "yes" ) {    
+                
+                $sys->email(array(
+                    "fromEmail" => "tieuhaphong91@gmail.com",
+                    "fromName" => "Independent Study Portal",
+                    "toEmail" => $ISCDetail->getAcademicChair()["email"],
+                    "toName" => $ISCDetail->getAcademicChair()["surname"] . " " . $ISCDetail->getAcademicChair()["givenName"],
+                    "subject" => "Independent Study Contract Portal: An ISC needs your attention!",
+                    "body" => "Please click here to review ISC:\n" . URL_PREFIX . "/public/ISCController/get/".$ISCID."/academicChair"
+                ));
+            } else { // or send email to supervisors
+                $sys->email(array(
+                    "fromEmail" => "tieuhaphong91@gmail.com",
+                    "fromName" => "Independent Study Portal",
+                    "toEmail" => $ISCDetail->getSupervisor()["email"],
+                    "toName" => $ISCDetail->getSupervisor()["surname"] . " " . $ISCDetail->getSupervisor()["givenName"],
+                    "subject" => "Independent Study Contract Portal: An ISC needs your attention!",
+                    "body" => "Please click here to review ISC:\n" . URL_PREFIX . "public/ISCController/get/".$ISCID."/supervisor"
+                ));
+                
+                // email to associate supervisor if applicable
+                if (isset($ISC["associateEmail"])) {
+                    $sys->email(array(
+                        "fromEmail" => "tieuhaphong91@gmail.com",
+                        "fromName" => "Independent Study Portal",
+                        "toEmail" => $ISCDetail->getAssociateSupervisor()["email"],
+                        "toName" => $ISCDetail->getAssociateSupervisor()["surname"] . " " . $ISCDetail->getAssociateSupervisor()["givenName"],
+                        "subject" => "Independent Study Contract Portal: An ISC needs your attention!",
+                        "body" => "Please click here to review ISC:\n" . URL_PREFIX . "public/ISCController/get/".$ISCID."/supervisor"
+                    ));
+                }
+            }
+        }
+        
         return $status;
     }
     

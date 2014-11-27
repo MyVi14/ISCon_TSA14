@@ -134,7 +134,7 @@
         <td>YES</td>
         <td><input type="radio" name="item5e" value="yes" <?PHP if(isset($item5e) && ($item5e["yesNoAnswer"] == 'yes')) echo 'checked="checked"'; ?> ></td>
         <td>NO</td>
-        <td><input type="radio" name="item5e" value="no" <?PHP if(isset($item5e) && ($item5e["yesNoAnswer"] == 'yes')) echo 'checked="checked"'; ?> ></td>
+        <td><input type="radio" name="item5e" value="no" <?PHP if(isset($item5e) && ($item5e["yesNoAnswer"] == 'no')) echo 'checked="checked"'; ?> ></td>
     </tr>
 
     <tr>

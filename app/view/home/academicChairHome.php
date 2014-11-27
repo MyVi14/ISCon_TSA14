@@ -3,41 +3,6 @@
     include($academicChairHeader);
 ?>
 
-    <script>
-        $(document).ready(function(){
-            $('[name="btnApprove"]').click(function(e){         
-                var url = $("#supervisorHomeForm").attr("action");
-                url += "AcademicChairController/approve/";
-                url += $(this).attr("data-iscid");
-                
-                // set new action attribute
-                $("#supervisorHomeForm").attr("action", url);
-            });
-            
-            $('[name="btnDisapprove"]').click(function(e){         
-                var url = $("#supervisorHomeForm").attr("action");
-                url += "AcademicChairController/disapprove/";
-                url += $(this).attr("data-iscid");
-                
-                // set new action attribute
-                $("#supervisorHomeForm").attr("action", url);
-            });
-            
-            $('[name="btnViewDetails"]').click(function(e){         
-                var url = $("#supervisorHomeForm").attr("action");
-                url += "ISCController/get/";
-                url += $(this).attr("data-iscid");
-                url += "/academicChair";
-                
-                // set new action attribute
-                $("#supervisorHomeForm").attr("action", url);
-            });
-            
-            
-            
-        });
-    </script>
-
 <!-- Start Home Div -->
 <div id="supervisorSection">	
     <form action="<?PHP echo BASE_URL . 'public/'; ?>" method="POST" id="supervisorHomeForm">
@@ -137,6 +102,49 @@
         </div>
     </div>
 </div>
+
+<script>
+        $(document).ready(function(){
+            $('[name="btnApprove"]').click(function(e){         
+                if (confirm("Are you sure to approve this ISC?") == true) {
+                    var url = $("#supervisorHomeForm").attr("action");
+                    url += "AcademicChairController/approve/";
+                    url += $(this).attr("data-iscid");
+
+                    // set new action attribute
+                    $("#supervisorHomeForm").attr("action", url);
+                } else {
+                    e.preventDefault();
+                }
+            });
+            
+            $('[name="btnDisapprove"]').click(function(e){
+                if (confirm("Are you sure not to approve this ISC?") == true) {
+                    var url = $("#supervisorHomeForm").attr("action");
+                    url += "AcademicChairController/disapprove/";
+                    url += $(this).attr("data-iscid");
+
+                    // set new action attribute
+                    $("#supervisorHomeForm").attr("action", url);
+                } else {
+                    e.preventDefault();
+                }
+            });
+            
+            $('[name="btnViewDetails"]').click(function(e){         
+                var url = $("#supervisorHomeForm").attr("action");
+                url += "ISCController/get/";
+                url += $(this).attr("data-iscid");
+                url += "/academicChair";
+                
+                // set new action attribute
+                $("#supervisorHomeForm").attr("action", url);
+            });
+            
+            
+            
+        });
+    </script>
 
 <script>
     $(document).ready(function(){

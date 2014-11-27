@@ -7,48 +7,49 @@
     <div class="form-group">
         <label class="control-label col-sm-2">Student Number</label>
         <div class="col-sm-10">
-            <input name="studentNo" type="text" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getStudentNo(); ?>">
+            <input name="studentNo" type="text" size="30" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getStudentNo(); ?>">
         </div>
     </div>
     
     <div class="form-group">
         <label class="control-label col-sm-2">Surname</label>
         <div class="col-sm-10">
-            <input name="studentSurname" type="text" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getSurname(); ?>">
+            <input name="studentSurname" type="text" size="30" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getSurname(); ?>">
         </div>
     </div>
     
     <div class="form-group">
         <label class="control-label col-sm-2">Given Name</label>
         <div class="col-sm-10">
-            <input name="studentGivenName" type="text" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getGivenName(); ?>">
+            <input name="studentGivenName" type="text" size="30" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getGivenName(); ?>">
         </div>
     </div>
     
     <div class="form-group">
         <label class="control-label col-sm-2">Phone No</label>
         <div class="col-sm-10">
-            <input name="studentPhoneNo" type="tel" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getPhoneNo(); ?>" />
+            <input name="studentPhoneNo" type="tel" size="30" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getPhoneNo(); ?>" />
         </div>
     </div>
     
     <div class="form-group">
         <label class="control-label col-sm-2">Email</label>
         <div class="col-sm-10">
-            <input name="studentEmail" type="email" size="20" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getEmail(); ?>" pattern="^\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,8}$" title="Email address" />
+            <input name="studentEmail" type="email" size="30" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getEmail(); ?>" pattern="^\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,8}$" title="Email address" />
         </div>
     </div>
 
     <br />
 
     <label> Please confirm : I have not already completed the maximum of two ISCs for this course. </label>
-    
     <div class="radio">
         <label><input type="radio" name="confirmMaximumISC" value="yes" <?PHP if(isset($ISCObj) && (strtolower($ISCObj->getConfirmMaximumISC()) == 'yes')) echo 'checked="checked"'; ?> /> Yes </label>
     </div>
     <div class="radio">
         <label><input type="radio" name="confirmMaximumISC" value="no" <?PHP if(isset($ISCObj) && (strtolower($ISCObj->getConfirmMaximumISC()) == 'no')) echo 'checked="checked"'; ?> /> No </label>
     </div>
+    
+    <br />
     
     <label>I am enrolled in the Doctor of Psychology and have not already completed the maximum of 9 points of ISCs. </label>
     <div class="radio">
@@ -57,6 +58,8 @@
     <div class="radio">
         <label><input type="radio" name="enrollInPHD" value="no" <?PHP if(isset($ISCObj) && (strtolower($ISCObj->getEnrollInPHD()) == 'no')) echo 'checked="checked"'; ?> /> No </label>
     </div>
+    
+    <br />
     
     <label> Application type:</label>
     <div class="radio">

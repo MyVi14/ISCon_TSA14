@@ -1,3 +1,11 @@
+<?php
+    include_once $headerLink;
+    
+    $navTitle = 'ISC School Dean Portal';
+    $barArr = array(
+                array("value" => "Home", "href" => BASE_URL . "public/Home/schoolDean")
+        );
+?>
 
 
 <nav class="navbar navbar-default">

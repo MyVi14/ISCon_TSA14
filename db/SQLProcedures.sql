@@ -1,8 +1,11 @@
 /* Create a new database or schema */
 
 USE ISCON;
-
-# Create procedure for inserting new ISC
+-- select * from ISC_supervisor_answer;
+-- select * from isc;
+-- set @varNew = -1;
+-- call CreateNewISC ('undergraudate', 'new', 'tony', 'tieu ha phong', '234', 'tieuhaphong91@gmail.com', '234234', 'no', 'no', @varNew);
+-- # Create procedure for inserting new ISC
 Delimiter //
 
 CREATE PROCEDURE CreateNewISC (
@@ -19,6 +22,12 @@ CREATE PROCEDURE CreateNewISC (
 							)
 BEGIN
 	Declare varNewID int;
+	Declare varItemID varchar(10);
+	Declare done	Int 	default 0;
+	Declare ISCSupervisorCursor	cursor for
+				select ItemID
+				from ISC_SUPERVISOR;
+	Declare continue 	HANDLER FOR NOT FOUND SET done = 1;
 	
 	INSERT INTO `ISCON`.`ISC` (`ApplicationType`, `ApplicationStatus`, `CreatedDate`, `Surname`, `GivenName`, `StudentNo`, `Email`, `PhoneNo`, `ConfirmMaximumISC`, `EnrollInPHD`) 
 			VALUES (newApplicationType, newApplicationStatus, CURDATE(), newSurname, newGivenName, newStudentNo, newEmail, newPhoneNo, newConfirmMaximumISC, newEnrollInPHD);
@@ -32,6 +41,20 @@ BEGIN
 	INSERT INTO `ISCON`.`ASSOCIATE_SUPERVISOR` (`ISCID`) values (varNewID);
 	INSERT INTO `ISCON`.`SCHOOL_DEAN` (`ISCID`) values (varNewID);
 	INSERT INTO `ISCON`.`ACADEMIC_CHAIR` (`ISCID`) values (varNewID);
+
+	OPEN ISCSupervisorCursor;
+
+		while (done != 1) DO
+			
+			FETCH ISCSupervisorCursor into varItemID;
+				if (not done) then
+					INSERT INTO `ISCON`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`) 
+						VALUES(varNewID, varItemID);
+				end if;
+		END WHILE;
+	
+	CLOSE ISCSupervisorCursor;
+	
 END
 //
 
@@ -378,9 +401,27 @@ DELIMITER ;
 #call UpdateISCDetails(27, 'courename', 3, 'title', 'no', 'learning objectives', 'project outline', 'previous study', 'previous experience', 700, 'mode', 'campus', 'period');
 
 # create procedure for adding ISC Supervisor Answer
+-- Delimiter //
+-- 
+-- CREATE PROCEDURE AddISCSupervisorAnswer (
+-- 									IN ISCID            int,
+-- 									IN ItemID			varchar(10),
+-- 									IN YesNoAnswer		varchar(10),
+-- 									IN TextAnswer		varchar(1000),
+-- 									IN Comment			varchar(1000)
+-- 									)
+-- label:BEGIN
+-- 	INSERT INTO `ISCON`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Comment`)
+-- 		VALUES(ISCID, ItemID, YesNoAnswer, TextAnswer, Comment);
+-- END label
+-- //
+-- 
+-- DELIMITER ;
+-- 
+# create procedure for adding ISC Supervisor Answer
 Delimiter //
 
-CREATE PROCEDURE AddISCSupervisorAnswer (
+CREATE PROCEDURE UpdateISCSupervisorAnswer (
 									IN ISCID            int,
 									IN ItemID			varchar(10),
 									IN YesNoAnswer		varchar(10),
@@ -388,12 +429,17 @@ CREATE PROCEDURE AddISCSupervisorAnswer (
 									IN Comment			varchar(1000)
 									)
 label:BEGIN
-	INSERT INTO `ISCON`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Comment`)
-		VALUES(ISCID, ItemID, YesNoAnswer, TextAnswer, Comment);
+	UPDATE `ISCON`.`ISC_SUPERVISOR_ANSWER` AS I
+	SET I.YesNoAnswer = YesNoAnswer, 
+		I.TextAnswer = TextAnswer, 
+		I.Comment = Comment
+	WHERE I.ISCID = ISCID and I.ItemID = ItemID;
 END label
 //
 
 DELIMITER ;
+call UpdateISCSupervisorAnswer (28, 'item9', 'yes', '', '');
+select * from ISC_SUPERVISOR_ANSWER;
 
 -- INSERT INTO `iscon`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Commment`)
 -- 	VALUES(30, 'item1', 'yes', '', '');

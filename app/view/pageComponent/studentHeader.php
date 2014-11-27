@@ -1,4 +1,12 @@
-
+<?php
+    include_once $headerLink;
+    
+    $navTitle = 'ISC Student Portal';
+    $barArr = array(
+                array("value" => "Home", "href" => BASE_URL . "public/Home/student"),
+                array("value" => "Create new ISC", "href" => BASE_URL . "public/ISCController/create")
+        );
+?>
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -20,3 +28,4 @@
       </div>
     </div>
   </nav>
+

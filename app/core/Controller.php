@@ -32,6 +32,11 @@ class Controller
         
         $headerLink = $rootFolderName . 'app/view/pageComponent/header.php';
         $footerLink = $rootFolderName . 'app/view/pageComponent/footer.php';
+        $navBar = $rootFolderName . 'app/view/pageComponent/navigationBar.php';
+        $studentHeader = $rootFolderName . 'app/view/pageComponent/studentHeader.php';
+        $supervisorHeader = $rootFolderName . 'app/view/pageComponent/supervisorHeader.php';
+        $academicChairHeader = $rootFolderName . 'app/view/pageComponent/academicChairHeader.php';
+        $schoolDeanHeader = $rootFolderName . 'app/view/pageComponent/schoolDeanHeader.php';
         
         require_once __DIR__ . '/../view/' . $view . '.php';
     }

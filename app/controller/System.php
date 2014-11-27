@@ -133,11 +133,13 @@ class System {
         if ($mail != null) {
             
             $mail->isSMTP();                            // Set mailer to use SMTP
-            $mail->Host = 'smtp.gmail.com';             // Specify main and backup SMTP servers
+            //$mail->Host = 'smtp.gmail.com';             // Specify main and backup SMTP servers
+            $mail->Host = 'smtpcorp.com';             // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                     // Enable SMTP authentication
             $mail->Username = 'tieuhaphong91@gmail.com';// SMTP username
-            $mail->Password = 'thelonelywind9x';        // SMTP password
+            $mail->Password = 'haphong285';        // SMTP password
             $mail->SMTPSecure = 'tls';                  // Enable encryption, 'ssl' also accepted
+            $mail->Port = 2525;
         }
     }
 } // end System class

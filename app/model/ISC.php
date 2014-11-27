@@ -19,6 +19,7 @@ class ISC {
     private $phoneNo;
     private $confirmMaximumISC;
     private $enrollInPHD;
+    private $additionalComment;
     
     // associative array
     private $associateSupervisor;
@@ -69,6 +70,10 @@ class ISC {
     
     public static function addISCSupervisorAnswer($ISC) {
         return ISCDA::addSupervisorAnswers($ISC->getISCID(), $ISC->getSupervisorAnswer());
+    }
+    
+    public static function updateISCSupervisorAnswers($ISC) {
+        return ISCDA::updateSupervisorAnswers($ISC->getISCID(), $ISC->getSupervisorAnswer());
     }
     
     public function addSupervisorAnswer($itemID, $yesNoAnswer, $textAnswer, $comment) {
@@ -139,7 +144,7 @@ class ISC {
                                         $isc["StudentNo"], 
                                         $isc["Email"], 
                                         $isc["PhoneNo"]);
-            
+            $newISC->setAdditionalComment($isc["AdditionalComment"]);
             array_push($ISCList, $newISC);
         }
         
@@ -300,6 +305,15 @@ class ISC {
     function getSupervisorAnswer() {
         return $this->supervisorAnswer;
     }
+    
+    function getAdditionalComment() {
+        return $this->additionalComment;
+    }
+
+    function setAdditionalComment($additionalComment) {
+        $this->additionalComment = $additionalComment;
+    }
+
 
 
 } // end class ISC

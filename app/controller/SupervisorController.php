@@ -26,13 +26,27 @@ class SupervisorController extends Controller {
     public function submitAnswers($ISCID = '', $answer = []) {
         $ISCModel = $this->model("ISC");
         
-        $status = $ISCModel->addISCSupervisorAnswer($this->constituteISCSupervisorAnswers($ISCID, $answer));
+        $status = $ISCModel->updateISCSupervisorAnswers($this->constituteISCSupervisorAnswers($ISCID, $answer));
         $ISCModel->approveISC($ISCID, "supervisor");
         
         $confirmation = "You have successfully approved ISC " . $ISCID;
         
         if($status == 1)
             $this->view('isc/confirmation', ["confirmation" => $confirmation]);
+        else 
+            $this->view('isc/confirmation', ["confirmation" => "Some error happend, try again"]);
+    }
+    
+    public function updateAnswers($ISCID = '', $answer = []) {
+        $ISCModel = $this->model("ISC");
+        
+        $status = $ISCModel->updateISCSupervisorAnswers($this->constituteISCSupervisorAnswers($ISCID, $answer));
+        $confirmation = "You have successfully updated your answers for ISC " . $ISCID;
+        
+        if($status == 1)
+            $this->view('isc/confirmation', ["confirmation" => $confirmation]);
+        else 
+            $this->view('isc/confirmation', ["confirmation" => "Some error happend, try again"]);
     }
     
     private function constituteISCSupervisorAnswers($ISCID = '', $answer = []) {

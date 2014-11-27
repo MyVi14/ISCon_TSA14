@@ -1,6 +1,6 @@
 <?PHP
     $title = "School Dean Home Page";
-    include($headerLink);
+    include($schoolDeanHeader);
 ?>
 
     <script>
@@ -48,7 +48,7 @@
             <th>Application Type</th>
             <th>Created Date</th> 
             <th>Status</th>
-            
+            <th>Additional Comment</th>
           </tr>
           
         <?PHP foreach ($data as $isc) { ?>
@@ -57,6 +57,7 @@
             <td> <?PHP echo $isc->getApplicationType(); ?> </td>
             <td> <?PHP echo $isc->getCreatedDate(); ?> </td>
             <td> <?PHP echo $isc->getApplicationStatus(); ?> </td>
+            <td> <?PHP echo $isc->getAdditionalComment(); ?> </td>
             <td><button name="btnViewDetails" data-iscid="<?PHP echo $isc->getISCID(); ?>"> View Details </button> </td>
             <td><button name="btnApprove" data-iscid="<?PHP echo $isc->getISCID(); ?>"> Approve </button> </td>
 <!--            <td><button name="btnDisapprove" data-iscid="<?PHP echo $isc->getISCID(); ?>"> Not Approve </button> </td>-->

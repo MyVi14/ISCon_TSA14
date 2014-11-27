@@ -1,4 +1,11 @@
-
+<?php
+    include_once $headerLink;
+    
+    $navTitle = 'ISC Academic Chair Portal';
+    $barArr = array(
+                array("value" => "Home", "href" => BASE_URL . "public/Home/academicChair")
+        );
+?>
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -12,6 +19,7 @@
                   echo '<li><a href="'.$item['href'].'"> '.$item['value'].' </a></li>';
               }
           ?>
+            <li><a name='requestInfo' class='osx'> Request Information </a></li>
         </ul>
 
         <ul class="nav navbar-nav navbar-right">

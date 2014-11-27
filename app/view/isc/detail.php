@@ -1,6 +1,6 @@
 <?PHP
     $title = "ISC Detail Page";
-    include($headerLink);
+    
 ?>
 <?PHP
     // set ISCID, taken from data array argument
@@ -8,6 +8,16 @@
     
     // set who is viewing it
     $who = $data["who"];
+    
+    if ($who == 'student') {
+        include_once $studentHeader;
+    } else if ($who == 'supervisor') {
+        include_once $supervisorHeader;
+    } else if ($who == 'academicChair') {
+        include_once $academicChairHeader;
+    } else if ($who == 'schoolDean') {
+        include_once $schoolDeanHeader;
+    }
     
     require_once ROOT_PATH . 'app/controller/ISCController.php';
     $iscController = new ISCController;

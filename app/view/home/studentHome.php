@@ -1,10 +1,14 @@
 <?PHP
     $title = "Student Home Page";
-    include($headerLink);
+    
+    include_once $studentHeader;
 ?>
 
+
+
 <!-- Start Home Div -->
-<div id="studentSection">	
+<div class="container">
+      
     <script>
         $(document).ready(function(){
             statusArray = $('td[name="statusCell"]');
@@ -48,8 +52,8 @@
             }); 
         });
     </script>
-    <br />
-    <p><button><a href="<?PHP echo BASE_URL . 'public/ISCController/create'; ?>"> Create new ISC </a> </button></p>
+    
+<!--    <p><button><a href="<?PHP echo BASE_URL . 'public/ISCController/create'; ?>"> Create new ISC </a> </button></p>-->
     
     <form action="<?PHP echo BASE_URL . 'public/ISCController/'; ?>" method="POST" id="studentHomeForm">
         <table name="" class="table table-hover" >
@@ -57,7 +61,8 @@
             <th>ISC ID</th>
             <th>Application Type</th>
             <th>Created Date</th> 
-            <th>Status</th> 
+            <th>Status</th>
+            <th>Additional Comment</th>
           </tr>
           
         <?PHP foreach ($data as $isc) { ?>
@@ -66,6 +71,7 @@
             <td> <?PHP echo $isc->getApplicationType(); ?> </td>
             <td> <?PHP echo $isc->getCreatedDate(); ?> </td>
             <td name="statusCell" data-applicationStatus="<?PHP echo $isc->getApplicationStatus(); ?>"> <?PHP echo $isc->getApplicationStatus(); ?> </td>
+            <td> <?PHP echo $isc->getAdditionalComment(); ?> </td>
             <td><button name="btnViewDetails" data-iscid="<?PHP echo $isc->getISCID(); ?>" > View Details </button> </td>
             <td><button name="btnSubmitISC" data-iscid="<?PHP echo $isc->getISCID(); ?>"> Submit ISC </button> </td>
             <td><button name="btnSubmitComponents" data-iscid="<?PHP echo $isc->getISCID(); ?>"> Submit Assessment Components </button> </td>

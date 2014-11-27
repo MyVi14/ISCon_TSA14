@@ -1,6 +1,6 @@
 <?PHP
     $title = "Create New ISC Page";
-    include($headerLink);
+    include_once $studentHeader;
 ?>
 
 <?PHP

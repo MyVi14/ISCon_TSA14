@@ -125,6 +125,33 @@ class ISCDA {
         return $status;
     }
     
+    public static function updateSupervisorAnswers($ISCID = '', $SupervisorAnswerArray = []) {
+        // connect to database
+        $PDOConn = Connection::getConnection();
+        
+        try {
+            $query = "call UpdateISCSupervisorAnswer(:ISCID, :ItemID, :YesNoAnswer, :TextAnswer, :Comment)";
+            $results = $PDOConn->prepare($query);
+            $results->bindParam(':ISCID', $ISCID);
+            
+            foreach ($SupervisorAnswerArray as $answer) {
+                
+                $results->bindParam(':ItemID', $answer["itemID"]);
+                $results->bindParam(':YesNoAnswer', $answer["yesNoAnswer"]);
+                $results->bindParam(':TextAnswer', $answer["textAnswer"]);
+                $results->bindParam(':Comment', $answer["comment"]);
+
+                $status= $results->execute();
+            }
+        } catch (Exception $ex) {
+            echo $query . ' :Cannot add ISC supervisor answer!';
+            echo $ex->getMessage();
+            exit;
+        }
+        
+        return $status;
+    }
+    
     public static function getISC($ISCID) {
         // connect to database
         $PDOConn = Connection::getConnection();

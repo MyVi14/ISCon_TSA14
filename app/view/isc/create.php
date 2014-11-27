@@ -8,8 +8,14 @@
 if ( $data == null ) {
     echo '<form action="'.BASE_URL . 'public/ISCController/create?section=A'.'" method="POST" role="form" class="form-horizontal">';
     include_once dirname(__FILE__). '/../iscDetail/personalDetails.php';
-        echo '<input type="submit" value="Submit" />';
-        echo '<input type="reset" value="Reset" />';
+    echo '<hr />';
+    echo '<div class="form-group">';
+    echo '<div class="col-sm-10">';
+        echo '<input type="submit" value="Submit" class="btn btn-default" />';
+        echo '&nbsp;&nbsp;';
+        echo '<input type="reset" value="Reset" class="btn btn-default" />';
+    echo '</div>';
+    echo '</div>';
     echo '</form>';
 } else if ($_GET['section'] == 'A'){
     // create new ISC and get new ID
@@ -19,10 +25,17 @@ if ( $data == null ) {
     
     // show ISC details
     echo '<form action="'.BASE_URL . 'public/ISCController/create?section=B'.'" method="POST" role="form" class="form-horizontal">';
+    echo "<h2> Fill in data for ISCID: $newISCID </h2>";
     include_once dirname(__FILE__). '/../iscDetail/iscDetails.php';
         echo '<input type="hidden" value="'.$newISCID.'" name="ISCID" />';
-        echo '<input type="submit" value="Submit" />';
-        echo '<input type="reset" value="Reset" />';
+    echo '<hr />';
+    echo '<div class="form-group">';
+    echo '<div class="col-sm-10">';
+        echo '<input type="submit" value="Submit" class="btn btn-default" />';
+        echo '&nbsp;&nbsp;';
+        echo '<input type="reset" value="Reset" class="btn btn-default" />';
+    echo '</div>';
+    echo '</div>';
     echo '</form>';
 } else if ($_GET['section'] == 'B') {
     // process ISC detail
@@ -45,16 +58,39 @@ if ( $data == null ) {
     // get ISC object
     $ISCObj = $iscController->getISC($ISCID);
     
-    echo '<form action="'.BASE_URL . 'public/ISCController/create?section=submit'.'" method="POST" role="form" class="form-horizontal">';
+    echo '<form action="'.BASE_URL . 'public/ISCController/create?section=submit'.'" method="POST" role="form" class="form-horizontal" id="iscSubmitForm">';
     // show the submit page including showing all details
+    echo "<h2> ISCID: $ISCID </h2>";
     include_once dirname(__FILE__). '/../iscDetail/personalDetails.php';
     include_once dirname(__FILE__). '/../iscDetail/iscDetails.php';
         echo '<input type="hidden" value="'.$ISCID.'" name="ISCID" />';
-        echo '<input type="hidden" value="processing" name="applicationStatus" />'; // hard code application status
-        echo '<input type="submit" value="Submit" />';
-        echo '<input type="reset" value="Reset" />';
+        echo '<input type="hidden" value="Processing" name="applicationStatus" />'; // hard code application status
+    echo '<hr />';
+    echo '<div class="form-group">';
+    echo '<div class="col-sm-10">';
+        echo '<input type="submit" value="Submit" class="btn btn-default" />';
+        echo '&nbsp;&nbsp;';
+        echo '<button name="btnUpdateISC" class="btn btn-default" data-url="'.BASE_URL.'public/ISCController/update/'.$ISCID.'"> Update </button>';
+        echo '&nbsp;&nbsp;';
+        echo '<input type="reset" value="Reset" class="btn btn-default" />';
+    echo '</div>';
+    echo '</div>';
     echo '</form>';
-    
+ ?>
+<script>
+    $(document).ready(function(e){
+        
+        $('[name="btnUpdateISC"]').click(function(e){         
+                $('[name="applicationStatus"]').remove();
+                   
+                var url = $(this).attr("data-url");
+                
+                // set new action attribute
+                $("#iscSubmitForm").attr("action", url);
+            });
+    });
+</script>
+<?PHP
 } else if ($_GET['section'] == 'submit') {
     // create new ISC and get new ID
     require_once ROOT_PATH . 'app/controller/ISCController.php';

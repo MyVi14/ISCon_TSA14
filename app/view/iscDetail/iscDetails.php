@@ -459,6 +459,4 @@
                      pattern="^\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,8}$" title="Email address" ></td>
       </tr>
     </table>
-    
-    <hr />
 </div>

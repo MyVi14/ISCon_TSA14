@@ -33,7 +33,7 @@ class ISC {
     }
     
     public function createISC($applicationType, $surname, $givenName, $studentNo, $email, $phoneNo, $confirmMaximumISC, $enrollInPHD) {
-        return ISCDA::createISC($applicationType, "new", $surname, $givenName, $studentNo, $email, $phoneNo, $confirmMaximumISC, $enrollInPHD);
+        return ISCDA::createISC($applicationType, "New", $surname, $givenName, $studentNo, $email, $phoneNo, $confirmMaximumISC, $enrollInPHD);
     }
     
     public static function updateISC($ISC) {

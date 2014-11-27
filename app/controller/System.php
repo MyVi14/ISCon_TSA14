@@ -13,7 +13,7 @@ class System {
         $target_dir = ROOT_PATH . "app/upload/";
         $target_file = $target_dir . $componentID. $fileName;
         $uploadOk = 1;
-        $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
+        //$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
         
         // Check if image file is a actual image or fake image
 //        if(isset($_POST["submit"])) {
@@ -133,13 +133,14 @@ class System {
         if ($mail != null) {
             
             $mail->isSMTP();                            // Set mailer to use SMTP
-            //$mail->Host = 'smtp.gmail.com';             // Specify main and backup SMTP servers
-            $mail->Host = 'smtpcorp.com';             // Specify main and backup SMTP servers
+            $mail->Host = 'smtp.gmail.com';             // Specify main and backup SMTP servers
+            //$mail->Host = 'smtpcorp.com';             // Specify main and backup SMTP servers
             $mail->SMTPAuth = true;                     // Enable SMTP authentication
             $mail->Username = 'tieuhaphong91@gmail.com';// SMTP username
-            $mail->Password = 'haphong285';        // SMTP password
+            //$mail->Password = 'haphong285';        // SMTP password
+            $mail->Password = 'thelonelywind9x';        // SMTP password
             $mail->SMTPSecure = 'tls';                  // Enable encryption, 'ssl' also accepted
-            $mail->Port = 2525;
+            //$mail->Port = 2525;
         }
     }
 } // end System class

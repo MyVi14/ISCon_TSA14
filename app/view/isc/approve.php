@@ -8,16 +8,21 @@
 
 <?php
     if ($who == "supervisor") {
-        echo "<h3> Fill in data for ISCID: $ISCID </h3>";
-        echo '<form action="'.BASE_URL.'public/SupervisorController/" method="POST" id="supervisorApproveForm" >';
+        echo '<form action="'.BASE_URL.'public/SupervisorController/" method="POST" id="supervisorApproveForm" role="form" class="form-horizontal" >';
+        echo "<h2> Fill in data for ISCID: $ISCID </h2>";
         include_once ROOT_PATH. 'app/view/iscDetail/supervisorAnswer.php';
         
-        echo '<label> Are you willing to supervise this ISC? </label>';
-        echo '<p>';
-        echo '<button data-iscid="'.$ISCID.'" name="btnSupervisorApprove"> Agree </button>';
-        echo '<button data-iscid="'.$ISCID.'" name="btnSupervisorUpdate"> Update </button>';
-        echo '<button data-iscid="'.$ISCID.'" name="btnSupervisorDisapprove"> Not Agree </button>';
-        echo '</p>';
+        echo '<hr />';
+        echo '<h2> Are you willing to supervise this ISC? </h2>';
+        echo '<div class="form-group">';
+        echo '<div class="col-sm-10">';
+            echo '<button data-iscid="'.$ISCID.'" name="btnSupervisorApprove" class="btn btn-default"> Agree </button>';
+            echo '&nbsp;&nbsp;';
+            echo '<button data-iscid="'.$ISCID.'" name="btnSupervisorUpdate" class="btn btn-default"> Update </button>';
+            echo '&nbsp;&nbsp;';
+            echo '<button data-iscid="'.$ISCID.'" name="btnSupervisorDisapprove" class="btn btn-default"> Not Agree </button>';
+        echo '</div>';
+        echo '</div>';
         echo '</form>';
     }
 ?>

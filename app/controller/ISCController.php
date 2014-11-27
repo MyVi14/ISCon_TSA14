@@ -20,6 +20,18 @@ class ISCController extends Controller {
         $this->view('isc/detail', ["ISCID" => $ISCID, "who" => $who]);
     }
     
+    public function update($ISCID = '', $ISC = []) {
+        $status = $this->updateISC($ISCID, $ISC);
+        $status = $this->updateISCDetail($ISCID, $ISC);
+        
+        if($status == 1) {
+            $confirmation = "You have successfully updated ISC " . $ISCID;
+            $this->view('isc/confirmation', ["confirmation" => $confirmation]);
+        } else {
+            $this->view('isc/confirmation', ["confirmation" => "Some problem occured, try again!"]);
+        }
+    }
+    
     public function assessmentComponent($ISCID = '', $who = '') {
         $ISC = $this->model('ISCDetail');
         
@@ -168,9 +180,6 @@ class ISCController extends Controller {
             
         }
         
-        //var_dump($ISC);
-        //var_dump($ISCDetail->getSchoolDean());
-        //echo $ISC["schoolDeanEmail"];
         $status = $ISCDetail->updateISCDetail($ISCDetail);
         
         return $status;

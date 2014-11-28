@@ -80,9 +80,7 @@
                 <?PHP if ($who == 'student') echo 'readonly="readonly"'; ?> />
             </td>
             <td><textarea type="text" name="comment<?PHP echo $component['ComponentID']; ?>" cols="25" rows="3"
-                        <?PHP if ($who == 'student') echo 'readonly="readonly"'; ?> >
-                    <?PHP echo $component['Comment']; ?>
-                </textarea>
+                        <?PHP if ($who == 'student') echo 'readonly="readonly"'; ?> > <?PHP echo $component['Comment']; ?></textarea>
             </td>
             <td>
                 <?PHP if($component["FileUpload"] == null && $who == 'student') { ?>

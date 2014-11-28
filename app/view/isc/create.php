@@ -79,15 +79,17 @@ if ( $data == null ) {
  ?>
 <script>
     $(document).ready(function(e){
-        
+        // click update button
         $('[name="btnUpdateISC"]').click(function(e){         
-                $('[name="applicationStatus"]').remove();
-                   
-                var url = $(this).attr("data-url");
-                
-                // set new action attribute
-                $("#iscSubmitForm").attr("action", url);
-            });
+            
+            // change status to new
+            $('[name="applicationStatus"]').attr("value", "New");
+            
+            var url = $(this).attr("data-url");
+
+            // set new action attribute
+            $("#iscSubmitForm").attr("action", url);
+        });
     });
 </script>
 <?PHP

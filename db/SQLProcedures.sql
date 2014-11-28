@@ -438,8 +438,6 @@ END label
 //
 
 DELIMITER ;
-call UpdateISCSupervisorAnswer (28, 'item9', 'yes', '', '');
-select * from ISC_SUPERVISOR_ANSWER;
 
 -- INSERT INTO `iscon`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Commment`)
 -- 	VALUES(30, 'item1', 'yes', '', '');

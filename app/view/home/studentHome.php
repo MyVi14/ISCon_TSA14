@@ -16,7 +16,7 @@
             $.each(statusArray, function (index, cell){
                 status = $(cell).attr("data-applicationStatus");
                 
-                if(status == "new") {
+                if(status == "New") {
                     $('[name="btnSubmitISC"]').eq(index).attr("enabled", "true");
                     
                 } else {

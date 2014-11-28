@@ -1,16 +1,18 @@
 <!-- This page use an object called $ISCObj to set up data, if no such object is found, no data is printed -->
 
 <!-- ISC Form - Start Section A -->
-<div id="personalDetails" style="margin-left: 10px" >
-    <h1 class="bg-warning"> Section A - Personal Details</h1>
+<div id="personalDetails" >
+    <h2 class="bg-warning center-block"> Section A - Personal Details </h2>
 
     <div class="form-group">
+        
         <label class="control-label col-sm-2">Student Number</label>
         <div class="col-sm-10">
-            <input name="studentNo" type="text" size="30" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getStudentNo(); ?>">
+            <input name="studentNo" type="text" size="30" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getStudentNo(); ?>" />
         </div>
-    </div>
     
+    </div>
+
     <div class="form-group">
         <label class="control-label col-sm-2">Surname</label>
         <div class="col-sm-10">
@@ -68,5 +70,6 @@
     <div class="radio">
         <label><input type="radio" name="applicationType" value="postgraduate" <?PHP if(isset($ISCObj) && (strtolower($ISCObj->getApplicationType()) == 'postgraduate')) echo 'checked="checked"'; ?>/> Postgraduate ISC </label>
     </div>
+    
 </div>
 <!-- ISC Form - End Section A -->

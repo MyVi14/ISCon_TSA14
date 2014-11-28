@@ -11,7 +11,7 @@ class System {
     
     public function upload($componentID, $fileName,  $fileVariable) {
         $target_dir = ROOT_PATH . "app/upload/";
-        $target_file = $target_dir . $componentID. $fileName;
+        $target_file = $target_dir . $fileName;
         $uploadOk = 1;
         //$imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
         

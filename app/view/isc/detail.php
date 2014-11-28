@@ -9,6 +9,7 @@
     // set who is viewing it
     $who = $data["who"];
     
+    // set header based on who is viewing
     if ($who == 'student') {
         include_once $studentHeader;
     } else if ($who == 'supervisor') {
@@ -23,13 +24,18 @@
     $iscController = new ISCController;
     $ISCObj = $iscController->getISC($ISCID);
     
-    echo "<h2> ISCID: $ISCID </h2>";
+    
+   echo '<h1> ISCID:'. $ISCID .'</h1>';
+    
     echo '<form role="form" class="form-horizontal" >';
     include_once dirname(__FILE__). '/../iscDetail/personalDetails.php';
+    
     include_once dirname(__FILE__). '/../iscDetail/iscDetails.php';
     
-    if($who != 'student')
+    
+    if($who == 'supervisor' || $who == 'schoolDean') {
         include_once dirname(__FILE__). '/../iscDetail/supervisorAnswer.php';
+    }
     echo '</form>';
 ?>
 

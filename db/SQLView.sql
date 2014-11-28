@@ -27,7 +27,8 @@ as select * from READING_LIST;
 create view ISCSupervisorAnswerView
 as select * from ISC_SUPERVISOR_ANSWER;
 
-
+create view ApplicationStatusView
+as select * from APPLICATION_STATUS;
 
 
 

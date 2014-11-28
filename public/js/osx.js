@@ -35,7 +35,7 @@ jQuery(function ($) {
 				$("#osx-modal-content", self.container).show();
 				var title = $("#osx-modal-title", self.container);
 				title.show();
-				d.container.slideDown('slow', function () {
+				d.container.slideDown('fast', function () {
 					setTimeout(function () {
 						var h = $("#osx-modal-data", self.container).height()
 							+ title.height()

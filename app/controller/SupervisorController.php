@@ -5,7 +5,7 @@
 
     Author: MyVi14
     Date: 1 November 2014
-    Purpose: Controller for processing business logic for Supervisors
+    Purpose: Controller for processing business logic for supervisors
  */
 class SupervisorController extends Controller {
     public function approve($ISCID) {
@@ -13,13 +13,28 @@ class SupervisorController extends Controller {
     }
     
     public function disapprove($ISCID) {
-        $ISCModel = $this->model("ISC");
+        $ISCModel = $this->model("ISCDetail");
         
         $status = $ISCModel->disapproveISC($ISCID, "supervisor");
         
         if($status == 1) {
+            $ISCDetail = $ISCModel::getISC($ISCID);
+            // email to school dean
+            require_once 'System.php';
+            $sys = new System();
+            $sys->email(array(
+                "fromEmail" => "tieuhaphong91@gmail.com",
+                "fromName" => "Independent Study Portal",
+                "toEmail" => $ISCDetail->getSchoolDean()["email"],
+                "toName" => $ISCDetail->getSchoolDean()["surname"] . " " . $ISCDetail->getSchoolDean()["givenName"],
+                "subject" => "Independent Study Contract Portal: An ISC needs your attention!",
+                "body" => "Supervisor has recently disapproved an ISC that needs your supervision. Please click here to review:\n" . URL_PREFIX . "public/ISCController/get/".$ISCID."/schoolDean"
+            ));
+            
             $confirmation = "You have successfully disapproved ISC " . $ISCID;
             $this->view('isc/confirmation', ["confirmation" => $confirmation]);
+        } else {
+            $this->view('isc/confirmation', ["confirmation" => "Problems occured! Try again"]);
         }
     }
     
@@ -28,8 +43,6 @@ class SupervisorController extends Controller {
         
         $status = $ISCModel->updateISCSupervisorAnswers($this->constituteISCSupervisorAnswers($ISCID, $answer));
         $ISCModel->approveISC($ISCID, "supervisor");
-        
-        $confirmation = "You have successfully approved ISC " . $ISCID;
         
         if($status == 1) {
             // send email
@@ -49,6 +62,8 @@ class SupervisorController extends Controller {
                 "subject" => "Independent Study Contract Portal: An ISC needs your attention!",
                 "body" => "Supervisor has recently approved an ISC that needs your supervision. Please click here to review:\n" . URL_PREFIX . "public/ISCController/get/".$ISCID."/schoolDean"
             ));
+            
+            $confirmation = "You have successfully approved ISC " . $ISCID;
             
             $this->view('isc/confirmation', ["confirmation" => $confirmation]);
         } else 

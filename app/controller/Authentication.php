@@ -1,5 +1,12 @@
 <?php
 
+/* 
+    Murdoch University - ICT333 - F03 - ISCon - TSA14
+
+    Author: MyVi14
+    Date: 1 November 2014
+    Purpose: Provide authentication of ISCon system
+*/
 class Authentication {
     public function student() {
         

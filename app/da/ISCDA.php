@@ -583,6 +583,26 @@ class ISCDA {
             }
         }
     }
+    
+    public static function refApplicationStatus() {
+        // connect to database
+        $PDOConn = Connection::getConnection();
+        
+        $query = "select * from ApplicationStatusView";
+        try {
+            $results = $PDOConn->prepare($query);
+            //$results->bindParam();
+            $results->execute();
+        } catch (Exception $ex) {
+            echo $query . ' :Cannot retrieve application status information!';
+            echo $ex->getMessage();
+            exit;
+        }
+        
+        $statusList = $results->fetchAll(PDO::FETCH_ASSOC);
+        
+        return $statusList;
+    }
 
 } // end ISCDA class
 

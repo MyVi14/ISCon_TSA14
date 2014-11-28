@@ -2,11 +2,11 @@
     $title = "Academic Chair Home Page";
     include($academicChairHeader);
 ?>
-
+<br />
 <!-- Start Home Div -->
 <div id="supervisorSection">	
     <form action="<?PHP echo BASE_URL . 'public/'; ?>" method="POST" id="supervisorHomeForm">
-        <table name="supervisorHomeTable" class="table table-hover">
+        <table name="supervisorHomeTable" class="table table-striped table-hover">
           <tr>
             <th>ISC ID</th>
             <th>Application Type</th>
@@ -29,9 +29,29 @@
         <?PHP } ?>
 
         </table>
-
     </form>
     
+    <h2>Application Status Reference Table</h2>
+    <table class="table table-striped table-bordered table-hover" width="400px">
+        <tr>
+            <th> Application Status </th>
+            <th> Description </th>
+        </tr>
+    <?PHP
+        require_once ROOT_PATH . 'app/controller/ISCController.php';
+
+        $controller = new ISCController;
+        $statusRef = $controller->getApplicationStatusReference();
+        //var_dump($statusRef);
+        
+        foreach ($statusRef as $s) {
+            echo '<tr>';
+            echo '<td> '. $s["ApplicationStatus"].'</td>';
+            echo '<td> '. $s["Description"].'</td>';
+            echo '</tr>';
+        }
+    ?>
+    </table>
 </div>
 <!-- End Home Div -->
 

@@ -68,7 +68,7 @@ if ( $data == null ) {
     echo '<hr />';
     echo '<div class="form-group">';
     echo '<div class="col-sm-10">';
-        echo '<input type="submit" value="Submit" class="btn btn-default" />';
+        echo '<input type="submit" value="Submit" class="btn btn-default" name="btnFinalSubmit" />';
         echo '&nbsp;&nbsp;';
         echo '<button name="btnUpdateISC" class="btn btn-default" data-url="'.BASE_URL.'public/ISCController/update/'.$ISCID.'"> Update </button>';
         echo '&nbsp;&nbsp;';
@@ -81,14 +81,25 @@ if ( $data == null ) {
     $(document).ready(function(e){
         // click update button
         $('[name="btnUpdateISC"]').click(function(e){         
-            
-            // change status to new
-            $('[name="applicationStatus"]').attr("value", "New");
-            
-            var url = $(this).attr("data-url");
+            if (confirm("Please confirm you want to update this ISC!") == true) {
+                // change status to new
+                $('[name="applicationStatus"]').attr("value", "New");
 
-            // set new action attribute
-            $("#iscSubmitForm").attr("action", url);
+                var url = $(this).attr("data-url");
+
+                // set new action attribute
+                $("#iscSubmitForm").attr("action", url);
+            } else {
+                e.preventDefault();
+            }
+        });
+        
+        // click final submit button
+        $('[name="btnFinalSubmit"]').click(function(e){         
+            if (confirm("By clicking this button. Your ISC will be saved to database and wait for processing. Please review your ISC at least 2 times before submiting! Do you want to continue?") == true) {
+            } else {
+                e.preventDefault();
+            }
         });
     });
 </script>

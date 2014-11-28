@@ -98,9 +98,8 @@
     </form></div>
     </div>
     <div id="header-logo"><a title="Murdoch University Home Page" href="http://www.murdoch.edu.au/">
-                Murdoch University Home Page
-
-             </a></div>
-    </div></header>
+                Murdoch University Home Page</a></div>
+    </div>
+    </header>
 </div>
 <!--[ END CONTENT AREA ] -->

@@ -11,45 +11,6 @@
     }
 ?>
 
-<script>
-    $(document).ready(function(){
-        btnSubmitArray = $("button[name='btnSubmitComponent']");
-        
-        $.each(btnSubmitArray, function (index, cell){
-           $(cell).css("display", "none");     
-        });
-        
-        $("button[name='btnSubmitComponent']").click(function(e){
-            var url = $("#assessmentComponentForm").attr("action");
-            url += "submitComponent/";
-            url += $(this).attr("data-componentid");
-            
-            // set new action attribute
-            $("#assessmentComponentForm").attr("action", url);
-        });
-        
-        // real button to submit to server
-        $("button[name='submitComponent']").click(function(e){
-            newContent = '<input type="file" name="FileUpload" /> ';
-            
-            $(this).siblings("button[name='btnSubmitComponent']").css("display", "inline");
-            
-            $(this).replaceWith(newContent);
-        });
-        
-        $("button[name='btnSubmitResult']").click(function(e){
-            var url = $("#assessmentComponentForm").attr("action");
-            url += "submitResult/";
-            url += $(this).attr("data-componentid");
-            
-            // set new action attribute
-            $("#assessmentComponentForm").attr("action", url);
-            //$("#assessmentComponentForm").attr("enctype", "");
-        });
-        
-    });
-</script>
-
 <form action="<?PHP echo BASE_URL . 'public/ISCController/'; ?>" method="POST" enctype="multipart/form-data" id="assessmentComponentForm">
 <h3> ISCID <?PHP echo $ISCID; ?> </h3>
 
@@ -76,7 +37,7 @@
             <td><?PHP echo $component["WordLength"]; ?></td>
             <td><?PHP echo $component["Percentage"]; ?></td>
             <td><?PHP echo $component["DueDate"]; ?></td>
-            <td> <input type="number" name="mark<?PHP echo $component['ComponentID']; ?>" min="0" max="100" value="<?PHP echo $component['Mark']; ?>" 
+            <td> <input type="number" name="mark<?PHP echo $component['ComponentID']; ?>" min="0" max="100" value="<?PHP echo $component['Mark']; ?>" required="required" 
                 <?PHP if ($who == 'student') echo 'readonly="readonly"'; ?> />
             </td>
             <td><textarea type="text" name="comment<?PHP echo $component['ComponentID']; ?>" cols="25" rows="3"
@@ -102,6 +63,54 @@
     </tbody>
 </table >
 </form>
+
+<script>
+    $(document).ready(function(){
+        btnSubmitArray = $("button[name='btnSubmitComponent']");
+        
+        $.each(btnSubmitArray, function (index, cell){
+           $(cell).css("display", "none");     
+        });
+        
+        // display real button to submit to server
+        $("button[name='submitComponent']").click(function(e){
+            
+            var newContent = '<input type="file" name="FileUpload" /> ';
+            
+            $(this).siblings("button[name='btnSubmitComponent']").css("display", "inline");
+            
+            $(this).replaceWith(newContent);
+        });
+        
+        $("button[name='btnSubmitComponent']").click(function(e){
+            if (confirm("Are you sure to submit this component?") == true) {
+                var url = $("#assessmentComponentForm").attr("action");
+                url += "submitComponent/";
+                url += $(this).attr("data-componentid");
+
+                // set new action attribute
+                $("#assessmentComponentForm").attr("action", url);
+            } else {
+                e.preventDefault();
+            }
+        });
+        
+        $("button[name='btnSubmitResult']").click(function(e){
+            if (confirm("Are you sure to submit result for this component?") == true) {
+                var url = $("#assessmentComponentForm").attr("action");
+                url += "submitResult/";
+                url += $(this).attr("data-componentid");
+
+                // set new action attribute
+                $("#assessmentComponentForm").attr("action", url);
+                //$("#assessmentComponentForm").attr("enctype", "");
+            } else {
+                e.preventDefault();
+            }
+        });
+        
+    });
+</script>
 
 <?PHP
     include($footerLink);

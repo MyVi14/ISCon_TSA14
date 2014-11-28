@@ -245,7 +245,11 @@ class ISCController extends Controller {
             $ISCModel->disapproveISC($ISCID, $who);
     }
     
-    
+    public function getApplicationStatusReference() {
+        $ISCModel = $this->model('ISCDetail');
+        
+        return $ISCModel::refApplicationStatus();
+    }
     
 } // end ISCController
 

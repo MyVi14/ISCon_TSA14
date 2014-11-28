@@ -1,6 +1,6 @@
 <!-- This page use an object called $ISCObj to set up data, if no such object is found, no data is printed -->
-<div id="iscDetails" style="margin-left: 10px">
-    <h1 class="bg-warning"> Section B - ISC Details </h1>
+<div id="iscDetails">
+    <p><h2 class="bg-warning"> Section B - ISC Details </h2> </p>
     
     <h3 style="display: inline;">1. Course </h3>
     <input type="text" size="50" name="courseName" value="<?PHP if(isset($ISCObj)) echo $ISCObj->getCourseName(); ?>" placeholder="course name"/>
@@ -92,7 +92,7 @@
       <tr>
         <td>Full Year (Feb - Nov)</td>
         <td>Monday Week 1</td> 
-        <td>First day of Semester 2 <p>assessment period</p></td>
+        <td>First day of Semester 2 assessment period </td>
         <td><input type="radio" name="teachingPeriod" value="FullYear (Feb - Nov)" <?PHP if(isset($ISCObj) && ($ISCObj->getTeachingPeriod() == 'FullYear (Feb - Nov)')) echo 'checked="checked"'; ?> ></td>
       </tr>
 
@@ -113,7 +113,7 @@
         <td>Full Year H Option (July - June) </td>
         <td>Monday Week 1 of Semester 2 </td> 
         <td>First day of Semester 1 assessment period </td>
-        <td><input type="radio" name="teachingPeriod" value="FullYear H Option (July - June)" <?PHP if(isset($ISCObj) && ($ISCObj->getTeachingPeriod() == 'FullYear H Option (July - June)')) echo 'checked="checked"'; ?> ></td>
+        <td><input type="radio" name="teachingPeriod" value="FullYear H Option (July-June)" <?PHP if(isset($ISCObj) && ($ISCObj->getTeachingPeriod() == 'FullYear H Option (July-June)')) echo 'checked="checked"'; ?> ></td>
       </tr>
     </table>
     
@@ -207,7 +207,8 @@
     </div>
     <script>
         $(document).ready(function() {
-            if ($("[name='isAReplacement']").attr("value") == "yes") {
+            
+            if ($("[name='isAReplacement']:checked").attr("value") == "yes") {
                 $("#replacement").show();
             } else {
                 $("#replacement").hide();
@@ -399,7 +400,7 @@
             $count = 0;
             foreach( $ISCObj->getAssessmentComponents() as $component ) {
                 echo '<tr>';
-                echo '<td><input type="text" name="number[]" size="5" value="'. ++$count .'"/></td>';
+                echo '<td><input type="number" name="number[]" size="5" value="'. ++$count .'"/></td>';
                 echo '<td><input type="text" name="componentDescription[]" value="'.$component["description"].'"/></td>';
                 echo '<td><input type="number" name="componentWordLength[]" min="0" value="'.$component["wordLength"].'"/></td>'; 
                 echo '<td><input type="number" name="componentPercentage[]" min="0" value="'.$component["percentage"].'" /></td>';
@@ -419,7 +420,7 @@
         $(document).ready(function() {
             $('[name="addAssessmentComponent"]').click(function(e){
                 componentRow = '<tr>';
-                componentRow += '<td><input type="number" name="number[]" value="" /></td>';
+                componentRow += '<td><input type="number" name="number[]" size="5" value="" /></td>';
                 componentRow += '<td><input type="text" name="componentDescription[]" value="" /></td>';
                 componentRow += '<td><input type="number" name="componentWordLength[]" min="0" value="" /></td>';
                 componentRow += '<td><input type="number" name="componentPercentage[]" min="0" value="" /></td>';

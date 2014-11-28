@@ -23,11 +23,9 @@
 
 <!-- ISC Form - Start Section B -->
 <div class="container">
-    
-    
     <h3 class="bg-warning"> Section C - Supervisor </h3>
 
-    <table class="table table-hover">
+    <table class="table table-hover" id="supervisorAnswerTable">
     <tr>
         <td>1.</td>
         <td><label> Apart from your time and normal library facilities, 
@@ -45,7 +43,6 @@
         <td>If so, are they available?</td>
         <td>YES</td>
         <td><input type="radio" name="item1Comment" value="yes" <?PHP if(isset($item1) && ($item1["comment"] == 'yes')) echo 'checked="checked"'; ?> ></td>
-    <h1><?PHP echo $item["comment"]; ?> </h1>
         <td>NO</td>
         <td><input type="radio" name="item1Comment" value="no" <?PHP if(isset($item1) && ($item1["comment"] == 'no')) echo 'checked="checked"'; ?> ></td>
     </tr>
@@ -174,7 +171,7 @@
 
     <tr>
         <td>8. </td>
-        <td>  
+        <td  colspan="5">  
             <label>How many other Independent Study Contracts have you agreed to 
                 supervise during the same period as this contract? </label>
             <input type="text" name="item8" value="<?PHP if( isset($item8) ) echo $item8["textAnswer"]; ?>" />
@@ -193,10 +190,16 @@
 
 </table>
 
-<label>Please ensure that that Academic Chair has agreed to this ISC, if applicable. </label>
+    <p><label>Please ensure that that Academic Chair has agreed to this ISC, if applicable. </label></p>
 
 </div>
 <!-- ISC Form - End Section B -->
+
+<script>
+    $(document).ready(function(e){
+        $("#supervisorAnswerTable tr").append("<td></td>");
+    });
+</script>
 
 
 

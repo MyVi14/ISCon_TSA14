@@ -35,7 +35,7 @@ INSERT INTO `ISCON`.`STUDY_PERIOD` (`TeachingPeriod`, `ContractStart`, `Completi
 INSERT INTO `ISCON`.`STUDY_PERIOD` (`TeachingPeriod`, `ContractStart`, `CompletionDate`) VALUES ('FullYear (Feb - Nov)', 'Monday_Week1', 'First day of Semester 2 assessment period');
 INSERT INTO `ISCON`.`STUDY_PERIOD` (`TeachingPeriod`, `ContractStart`, `CompletionDate`) VALUES ('Winter', 'First Monday after the end of Semester 1', 'Monday before the start of Semester 2');
 INSERT INTO `ISCON`.`STUDY_PERIOD` (`TeachingPeriod`, `ContractStart`, `CompletionDate`) VALUES ('Summer', 'First Monday after the end of Semester 2', 'Monday before the start of Semester 1');
-INSERT INTO `ISCON`.`STUDY_PERIOD` (`TeachingPeriod`, `ContractStart`, `CompletionDate`) VALUES ('FullYear H Option (July - June)', 'Monday Week 1 of Semester 2', 'First day of Semester 1 assessment period');
+INSERT INTO `ISCON`.`STUDY_PERIOD` (`TeachingPeriod`, `ContractStart`, `CompletionDate`) VALUES ('FullYear H Option (July-June)', 'Monday Week 1 of Semester 2', 'First day of Semester 1 assessment period');
 
 INSERT INTO `ISCON`.`CAMPUS` (`Location`, `Description`) VALUES ('SouthSt', '');
 INSERT INTO `ISCON`.`CAMPUS` (`Location`, `Description`) VALUES ('Rockingham', '');

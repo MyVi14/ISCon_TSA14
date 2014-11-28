@@ -375,22 +375,22 @@ CREATE PROCEDURE UpdateISCDetails (
 								ContractLevel       INT(3),
 								StudyMode           VARCHAR(20),
 								CampusLocation      VARCHAR(50),
-								TeachingPeriod      VARCHAR(30)
+								TeachingPeriod      VARCHAR(50)
 								)
 label:BEGIN
 	UPDATE `ISCON`.`ISC_DETAIL` as I
-	SET I.CourseName =  CourseName,
-		I.CreditPoint =  CreditPoint, 
-		I.ContractTitle =  ContractTitle, 
-		I.IsAReplacement =  IsAReplacement, 
-		I.LearningObjectives =  LearningObjectives, 
-		I.ProjectOutline =  ProjectOutline, 
-		I.PreviousStudy =  PreviousStudy, 
-		I.PreviousExperience =  PreviousExperience, 
+	SET I.CourseName = CourseName,
+		I.CreditPoint = CreditPoint, 
+		I.ContractTitle = ContractTitle, 
+		I.IsAReplacement = IsAReplacement, 
+		I.LearningObjectives = LearningObjectives, 
+		I.ProjectOutline = ProjectOutline, 
+		I.PreviousStudy = PreviousStudy, 
+		I.PreviousExperience = PreviousExperience, 
 		I.ContractLevel =  ContractLevel, 
-		I.StudyMode =  StudyMode, 
-		I.CampusLocation =  CampusLocation, 
-		I.TeachingPeriod =  TeachingPeriod
+		I.StudyMode = StudyMode, 
+		I.CampusLocation = CampusLocation, 
+		I.TeachingPeriod = TeachingPeriod
 	WHERE I.ISCID = ISCID;
 		
 END label
@@ -438,6 +438,5 @@ END label
 //
 
 DELIMITER ;
-
 -- INSERT INTO `iscon`.`ISC_SUPERVISOR_ANSWER`(`ISCID`, `ItemID`, `YesNoAnswer`, `TextAnswer`, `Commment`)
 -- 	VALUES(30, 'item1', 'yes', '', '');
